@@ -1,5 +1,6 @@
-syntax on
-set bg=dark
+"load plugins
+execute pathogen#infect()
+
 set autoindent
 set backspace=2
 set diffopt=filler,iwhite
@@ -28,7 +29,11 @@ set ttimeoutlen=10000
 set virtualedit=block
 set wildmenu
 
-colorscheme evening
+"colour foo
+set t_Co=16
+syntax enable
+set background=dark
+colorscheme solarized
 
 "sets tabs to 4 spaces
 set cindent shiftwidth=4
@@ -53,6 +58,13 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
+"nerdtree foo
+nmap \e :NERDTreeToggle<CR>
+
+"Stuff for CtrlP
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
 "whitespace
 "set list
 "set listchars=trail:.
@@ -64,4 +76,3 @@ autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
-execute pathogen#infect()
