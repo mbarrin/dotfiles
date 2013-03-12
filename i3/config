@@ -195,7 +195,7 @@ bindsym $mod+o exec /home/matthew/bin/i3-quickswitch.py
 
 #Autostart programs
 #colour shift
-exec gtk-redshift -l  53.2052:-6.1535 &
+#exec gtk-redshift -l  53.2052:-6.1535 &
 #networking applet.
 exec nm-applet &
 #Sets Wallpaper
