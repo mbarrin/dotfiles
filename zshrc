@@ -33,9 +33,9 @@ ZSH_THEME="moju"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git debian rvm vi-mode autojump command-not-found github)
+plugins=(git debian rvm vi-mode fasd command-not-found github)
 
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
-export PATH=/home/matthew/.local/share/Steam/debian_bin:/home/matthew/bin:/usr/local/rvm/gems/ruby-1.9.3-p194/bin:/usr/local/rvm/gems/ruby-1.9.3-p194@global/bin:/usr/local/rvm/rubies/ruby-1.9.3-p194/bin:/usr/local/rvm/bin:/home/matthew/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/local/sbin:/home/matthew/Work/AWS/ec2tools/ec2-api-tools-1.6.6.1/bin:/home/matthew/Work/AWS/cftools/AWSCloudFormation-1.0.11/bin:/home/matthew/Work/AWS/iamtools/IAMCli-1.5.0/bin:/home/matthew/Work/AWS/asgtools/AutoScaling-1.0.61.1/bin:/home/matthew/.rvm/bin
+export PATH=$HOME/.local/share/Steam/debian_bin:$HOME/bin:/usr/local/rvm/gems/ruby-1.9.3-p194@global/bin:/usr/local/rvm/rubies/ruby-1.9.3-p194/bin:/usr/local/rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/local/sbin:$EC2_HOME/bin:$AWS_CLOUDFORMATION_HOME/bin:$AWS_IAM_HOME/bin:$AWS_AUTO_SCALING_HOME/bin:$AWS_ELB_HOME/bin:$HOME/.rvm/bin

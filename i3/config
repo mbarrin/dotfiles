@@ -24,7 +24,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec dmenu_run
+bindsym $mod+p exec gmrun
 
 # change focus
 bindsym $mod+h focus left
@@ -75,6 +75,12 @@ bindsym $mod+a focus parent
 
 # focus the child container
 bindsym $mod+d focus child
+
+#One important change to note is that moving windows to a different output will
+#no longer move focus to that output. If you want to have the old behavior,
+#modify the keybindings for moving in your configfile like this:
+#
+#bindsym $mod+Shift+1 move workspace 1; workspace 1
 
 # switch Gto workspace
 bindsym $mod+1 workspace 1
@@ -202,3 +208,5 @@ exec nm-applet &
 #exec feh --bg-scale /home/mbarrington/Pictures/Wallpapers/chaos_knight_wallpaper.jpg
 #Disables the fucking beep
 exec xset b off
+
+for_window [class="Gmrun" instance="gmrun"] floating enable
