@@ -1,11 +1,11 @@
-URxvt*font: xft:Monospace:pixelsize=13
+URxvt*font: xft:monospace:size=10
 
 !URxvt*foreground:White
 !URxvt*background:[30]Black
 
 !For transparency
-!URxvt*background:[30]Black
-!URxvt*depth:32
+!URxvt*transparent: true
+!URxvt*shading: 110
 
 URxvt*scrollBar: False
 URxvt*scrollTtyOutput: True

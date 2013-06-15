@@ -33,9 +33,10 @@ ZSH_THEME="moju"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git debian rvm vi-mode fasd command-not-found github)
+plugins=(git git-flow debian rvm vi-mode fasd command-not-found github vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
-# Customize to your needs...
-export PATH=$HOME/.local/share/Steam/debian_bin:$HOME/bin:/usr/local/rvm/gems/ruby-1.9.3-p194@global/bin:/usr/local/rvm/rubies/ruby-1.9.3-p194/bin:/usr/local/rvm/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/opt/local/bin:/opt/local/sbin:/opt/local/bin:/opt/local/sbin:$EC2_HOME/bin:$AWS_CLOUDFORMATION_HOME/bin:$AWS_IAM_HOME/bin:$AWS_AUTO_SCALING_HOME/bin:$AWS_ELB_HOME/bin:$HOME/.rvm/bin
+export PATH=$HOME/bin:/bin:/usr/bin:/usr/local/bin
+
+bindkey -M viins '¬' run-help

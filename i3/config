@@ -109,8 +109,8 @@ bindsym $mod+Shift+parenright move container to workspace 10
 # move workspace to different output (monitor)
 
 bindsym $mod+z move workspace to output LVDS
-bindsym $mod+x move workspace to output DisplayPort-0
-bindsym $mod+c move workspace to output VGA-0
+bindsym $mod+x move workspace to output HDMI1
+bindsym $mod+c move workspace to output VGA1
 
 # reload the configuration file
 bindsym $mod+Shift+C reload
@@ -149,12 +149,13 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+        position top
 #       output LVDS
 #       output DisplayPort-0
 #       output VGA-0
         colors {
-            background #999999
-            statusline #222222
+#            background #999999
+#            statusline #222222
 
             Focused_workspace  #FFFFFF #00FF00
             active_workspace   #FFFFFF #888875
@@ -166,7 +167,7 @@ bar {
 
 #Colours for windows
 #Class                  border  background  text    indicator
-client.focused          #CC6633 #CC6633     #FFFFFF   #FFFFFF
+client.focused          #CC6633 #CC6633     #FFFFFF   #000000
 #client.focused_inactive #FFFFFF #FFFFFF     #FFFFFF   #FFFFFF
 #client.unfocused        #FFFFFF #FFFFFF     #FFFFFF   #FFFFFF
 #client.urgent           #FFFFFF #FFFFFF     #FFFFFF   #FFFFFF
@@ -197,7 +198,7 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 bindsym $mod+Shift+U exec nautilus --no-desktop --browser
 
 #i3-quickswitch
-bindsym $mod+o exec /home/matthew/bin/i3-quickswitch.py
+bindsym $mod+o exec quickswitch.py
 
 #Autostart programs
 #colour shift
