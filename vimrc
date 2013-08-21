@@ -31,7 +31,7 @@ set wildmenu
 
 "colour foo
 set t_Co=16
-syntax enable
+syntax on
 set background=dark
 colorscheme solarized
 

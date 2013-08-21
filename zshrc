@@ -33,10 +33,15 @@ ZSH_THEME="moju"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git git-flow debian rvm vi-mode fasd command-not-found github vagrant)
+plugins=(grails fabric pip golang git git-flow debian rvm vi-mode fasd command-not-found github vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=$HOME/bin:/bin:/usr/bin:/usr/local/bin
+export PATH=$HOME/bin:/bin:/usr/bin:/usr/local/bin:/usr/local/packer:/opt/jetbrains/idea-IU-129.713/bin
+export GOPATH=/home/matthew/github/mitchellh/packer
+export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 
 bindkey -M viins '¬' run-help
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "/home/matthew/.gvm/bin/gvm-init.sh" ]] && source "/home/matthew/.gvm/bin/gvm-init.sh"
