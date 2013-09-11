@@ -37,7 +37,7 @@ plugins=(grails fabric pip golang git git-flow debian rvm vi-mode fasd command-n
 
 source $ZSH/oh-my-zsh.sh
 
-export PATH=$HOME/bin:/bin:/usr/bin:/usr/local/bin:/usr/local/packer:/opt/jetbrains/idea-IU-129.713/bin
+export PATH=$HOME/bin:/sbin:/usr/sbin:/usr/local/sbin:/bin:/usr/bin:/usr/local/bin:/usr/local/packer:/opt/jetbrains/idea-IU-129.713/bin:/usr/games
 export GOPATH=/home/matthew/github/mitchellh/packer
 export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 
