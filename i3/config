@@ -18,7 +18,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec urxvtc
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -209,5 +209,6 @@ exec nm-applet &
 #exec feh --bg-scale /home/mbarrington/Pictures/Wallpapers/chaos_knight_wallpaper.jpg
 #Disables the fucking beep
 exec xset b off
+exec urxvtd -q -o -f
 
 for_window [class="Gmrun" instance="gmrun"] floating enable

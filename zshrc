@@ -16,7 +16,7 @@ ZSH_THEME="moju"
 # CASE_SENSITIVE="true"
 
 # Comment this out to disable bi-weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+DISABLE_AUTO_UPDATE="true"
 
 # Uncomment to change how many often would you like to wait before auto-updates occur? (in days)
 # export UPDATE_ZSH_DAYS=13
@@ -38,10 +38,10 @@ plugins=(grails fabric pip golang git git-flow debian rvm vi-mode fasd command-n
 source $ZSH/oh-my-zsh.sh
 
 export PATH=$HOME/bin:/sbin:/usr/sbin:/usr/local/sbin:/bin:/usr/bin:/usr/local/bin:/usr/local/packer:/opt/jetbrains/idea-IU-129.713/bin:/usr/games
-export GOPATH=/home/matthew/github/mitchellh/packer
+export GOPATH=/home/matthew/projects/gospace
 export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 
 bindkey -M viins '¬' run-help
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "/home/matthew/.gvm/bin/gvm-init.sh" ]] && source "/home/matthew/.gvm/bin/gvm-init.sh"
+#[[ -s "/home/matthew/.gvm/bin/gvm-init.sh" ]] && source "/home/matthew/.gvm/bin/gvm-init.sh"
