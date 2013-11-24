@@ -108,8 +108,8 @@ bindsym $mod+Shift+parenright move container to workspace 10
 
 # move workspace to different output (monitor)
 
-bindsym $mod+z move workspace to output LVDS
-bindsym $mod+x move workspace to output HDMI1
+bindsym $mod+z move workspace to output DP1
+bindsym $mod+x move workspace to output LVDS
 bindsym $mod+c move workspace to output VGA1
 
 # reload the configuration file
