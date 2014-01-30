@@ -83,9 +83,9 @@ bindsym $mod+d focus child
 #bindsym $mod+Shift+1 move workspace 1; workspace 1
 
 # switch Gto workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
+bindsym $mod+1 workspace 1 web
+bindsym $mod+2 workspace 2 term
+bindsym $mod+3 workspace 3 irc
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
@@ -95,9 +95,9 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+exclam move container to workspace 1
-bindsym $mod+Shift+quotedbl move container to workspace 2
-bindsym $mod+Shift+sterling move container to workspace 3
+bindsym $mod+Shift+exclam move container to workspace 1 web
+bindsym $mod+Shift+quotedbl move container to workspace 2 term
+bindsym $mod+Shift+sterling move container to workspace 3 irc
 bindsym $mod+Shift+dollar move container to workspace 4
 bindsym $mod+Shift+percent move container to workspace 5
 bindsym $mod+Shift+asciicircum move container to workspace 6
@@ -109,8 +109,7 @@ bindsym $mod+Shift+parenright move container to workspace 10
 # move workspace to different output (monitor)
 
 bindsym $mod+z move workspace to output DP1
-bindsym $mod+x move workspace to output LVDS
-bindsym $mod+c move workspace to output VGA1
+bindsym $mod+x move workspace to output eDP1
 
 # reload the configuration file
 bindsym $mod+Shift+C reload

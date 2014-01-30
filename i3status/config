@@ -7,6 +7,7 @@ general {
 order += "ethernet eth0"
 order += "wireless wlan0"
 order += "battery 0"
+order += "battery 1"
 order += "volume master"
 order += "disk /"
 order += "time"
@@ -23,7 +24,11 @@ ethernet eth0 {
 }
 
 battery 0 {
-        format = "%remaining"
+        format = "%status %remaining (%emptytime %consumption)"
+        path = "/sys/class/power_supply/BAT%d/uevent"
+}
+battery 1 {
+        format = "%status %remaining (%emptytime %consumption)"
         path = "/sys/class/power_supply/BAT%d/uevent"
 }
 
