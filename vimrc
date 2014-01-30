@@ -1,5 +1,24 @@
-"load plugins
-execute pathogen#infect()
+filetype off
+
+" Vundle initialization
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+" Bundles
+Bundle 'kien/ctrlp.vim'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'msanders/snipmate.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'godlygeek/tabular'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'mhinz/vim-signify'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'bling/vim-airline'
+Bundle 'lepture/vim-jinja'
+Bundle 'mileszs/ack.vim'
 
 set autoindent
 set backspace=2
@@ -35,10 +54,10 @@ syntax on
 set background=dark
 colorscheme solarized
 
-"sets tabs to 4 spaces
-set cindent shiftwidth=4
-set shiftwidth=4
-set softtabstop=4
+"sets tabs to 2 spaces
+set cindent shiftwidth=2
+set shiftwidth=2
+set softtabstop=2
 
 "line numbers
 set number
@@ -58,9 +77,6 @@ nmap <silent> <c-j> :wincmd j<CR>
 nmap <silent> <c-h> :wincmd h<CR>
 nmap <silent> <c-l> :wincmd l<CR>
 
-"nerdtree foo
-nmap \e :NERDTreeToggle<CR>
-
 "Stuff for CtrlP
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_map = '<Leader>t'
@@ -70,7 +86,6 @@ let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
-
 
 "whitespace
 "set list
@@ -87,4 +102,3 @@ autocmd BufWinLeave * call clearmatches()
 let g:syntastic_mode_map = { 'mode': 'active',
         \ 'active_filetypes': [],
         \ 'passive_filetypes': ['html'] }
-
