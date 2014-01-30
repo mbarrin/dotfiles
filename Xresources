@@ -19,6 +19,7 @@ URxvt*saveLines: 8000
 !URxvt*termName:xterm
 URxvt.termName: rxvt-unicode-256color
 
+URxvt.perl-lib: /home/matthew/Repos/muennich/urxvt-perls
 URxvt.perl-ext-common:  default,url-select,keyboard-select,clipboard
 
 !Link opening. alt+u to select. j/k to move. y to copy. enter to open. esc to exit
