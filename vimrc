@@ -18,7 +18,15 @@ Bundle 'mhinz/vim-signify'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'bling/vim-airline'
 Bundle 'lepture/vim-jinja'
-Bundle 'mileszs/ack.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'mhinz/vim-startify'
+Bundle 'rking/ag.vim'
+Bundle 'SirVer/ultisnips'
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'chase/vim-ansible-yaml'
+
+set enc=utf-8
+set fileencoding=utf-8
 
 set autoindent
 set backspace=2
@@ -60,6 +68,7 @@ set shiftwidth=2
 set softtabstop=2
 
 "line numbers
+"set relativenumber
 set number
 
 filetype on
@@ -71,15 +80,9 @@ set ignorecase
 set smartcase
 set incsearch
 
-"easier split navigation
-nmap <silent> <c-k> :wincmd k<CR>
-nmap <silent> <c-j> :wincmd j<CR>
-nmap <silent> <c-h> :wincmd h<CR>
-nmap <silent> <c-l> :wincmd l<CR>
-
 "Stuff for CtrlP
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_map = '<Leader>t'
+let g:ctrlp_map = '<Leader>p'
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
@@ -87,9 +90,12 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 
+"vim airline settings
+
+
 "whitespace
-"set list
-"set listchars=trail:.
+set list
+set listchars=trail:.
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -102,3 +108,24 @@ autocmd BufWinLeave * call clearmatches()
 let g:syntastic_mode_map = { 'mode': 'active',
         \ 'active_filetypes': [],
         \ 'passive_filetypes': ['html'] }
+
+" UltiSnips completion function that tries to expand a snippet. If there's no
+" snippet for expanding, it checks for completion window and if it's
+" shown, selects first element. If there's no completion window it tries to
+" jump to next placeholder. If there's no placeholder it just returns TAB key
+function! g:UltiSnips_Complete()
+    call UltiSnips_ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips_JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<TAB>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
+
+au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
