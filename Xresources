@@ -1,14 +1,8 @@
-!URxvt.font: xft:monospace:size=10:antialiasing=true
-URxvt.font: xft:DejaVu Sans Mono:style=Book:size=10:antialiasing=true
-!URxvt.font: xft:Anonymous Pro:style=Regular:size=10:antialiasing=true
-!URxvt*letterSpace: -1
+urxvt*font: xft:Terminus:size=14
+urxvt*boldFont: xft:Terminus:size=14
 
-!URxvt*foreground:White
-!URxvt*background:[30]Black
-
-!For transparency
-!URxvt*transparent: true
-!URxvt*shading: 110
+URxvt*iso14755: False
+URxvt*iso14755_52: False
 
 URxvt*scrollBar: False
 URxvt*scrollTtyOutput: True
@@ -19,13 +13,19 @@ URxvt*saveLines: 8000
 !URxvt*termName:xterm
 URxvt.termName: rxvt-unicode-256color
 
-URxvt.perl-lib: /home/matthew/Repos/muennich/urxvt-perls
-URxvt.perl-ext-common:  default,url-select,keyboard-select,clipboard
+URxvt.perl-lib: /home/matthew/src/muennich/urxvt-perls
+URxvt.perl-ext-common:  default,url-select,keyboard-select,clipboard,font-size
 
 !Link opening. alt+u to select. j/k to move. y to copy. enter to open. esc to exit
 URxvt.keysym.M-Escape:  perl:keyboard-select:activate
 URxvt.urlLauncher:      /usr/bin/firefox
 URxvt.keysym.M-u:    perl:url-select:select_next
+
+URxvt.keysym.Control-0x2b: perl:font-size:increase
+URxvt.keysym.Control-0x2d: perl:font-size:decrease
+
+URxvt.keysym.C-S-Up:   perl:font-size:incglobal
+URxvt.keysym.C-S-Down: perl:font-size:decglobal
 
 !Tabs
 URxvt.tabbed.tabbar-fg: 5

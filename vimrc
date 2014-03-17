@@ -1,3 +1,4 @@
+set nocompatible
 filetype off
 
 " Vundle initialization
@@ -24,6 +25,15 @@ Bundle 'rking/ag.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'chase/vim-ansible-yaml'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'dsawardekar/ember.vim'
+Bundle 'tpope/vim-vinegar'
+Bundle 'rodjek/vim-puppet'
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'elzr/vim-json'
+
+syntax enable
+filetype plugin indent on
 
 set enc=utf-8
 set fileencoding=utf-8
@@ -40,8 +50,7 @@ set guioptions-=T
 set hidden
 set history=50
 set laststatus=2
-"set linebreak
-set nocompatible
+set linebreak
 set nofen
 set notimeout
 set nottimeout
@@ -49,8 +58,6 @@ set ruler
 set scrolloff=1
 set showcmd
 set showmatch
-"set textwidth=0
-"set textwidth=80
 set timeoutlen=10000
 set ttimeoutlen=10000
 set virtualedit=block
@@ -58,7 +65,6 @@ set wildmenu
 
 "colour foo
 set t_Co=16
-syntax on
 set background=dark
 colorscheme solarized
 
@@ -70,10 +76,6 @@ set softtabstop=2
 "line numbers
 "set relativenumber
 set number
-
-filetype on
-"tries to do smart indenting based on filetype
-filetype indent plugin on
 
 "insensitive unless searching for capitals
 set ignorecase
@@ -92,10 +94,8 @@ let g:ctrlp_switch_buffer = 0
 
 "vim airline settings
 
-
-"whitespace
-set list
-set listchars=trail:.
+"var renaming
+:nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -114,12 +114,12 @@ let g:syntastic_mode_map = { 'mode': 'active',
 " shown, selects first element. If there's no completion window it tries to
 " jump to next placeholder. If there's no placeholder it just returns TAB key
 function! g:UltiSnips_Complete()
-    call UltiSnips_ExpandSnippet()
+    call UltiSnips#ExpandSnippet()
     if g:ulti_expand_res == 0
         if pumvisible()
             return "\<C-n>"
         else
-            call UltiSnips_JumpForwards()
+            call UltiSnips#JumpForwards()
             if g:ulti_jump_forwards_res == 0
                return "\<TAB>"
             endif
