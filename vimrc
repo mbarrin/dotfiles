@@ -8,32 +8,34 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Bundles
+Bundle 'Blackrush/vim-gocode'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
-Bundle 'msanders/snipmate.vim'
 Bundle 'scrooloose/syntastic'
-Bundle 'godlygeek/tabular'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'mhinz/vim-signify'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'bling/vim-airline'
-Bundle 'lepture/vim-jinja'
 Bundle 'majutsushi/tagbar'
 Bundle 'mhinz/vim-startify'
 Bundle 'rking/ag.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'chase/vim-ansible-yaml'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'dsawardekar/ember.vim'
 Bundle 'tpope/vim-vinegar'
 Bundle 'rodjek/vim-puppet'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'elzr/vim-json'
+Bundle 'honza/vim-snippets'
+Bundle 'skalnik/vim-vroom.git'
+Bundle 'benmills/vimux.git'
+Bundle "ekalinin/Dockerfile.vim"
+Bundle "godlygeek/tabular"
 
 syntax enable
 filetype plugin indent on
+set omnifunc=syntaxcomplete#Complete
 
 set enc=utf-8
 set fileencoding=utf-8
@@ -47,6 +49,9 @@ set foldlevel=0
 set foldmethod=indent
 set guioptions-=m
 set guioptions-=T
+set guioptions+=LlRrb
+set guioptions-=LlRrb
+set guifont=Terminus\ 10
 set hidden
 set history=50
 set laststatus=2
@@ -65,7 +70,7 @@ set wildmenu
 
 "colour foo
 set t_Co=16
-set background=dark
+"set background=light
 colorscheme solarized
 
 "sets tabs to 2 spaces
@@ -82,6 +87,9 @@ set ignorecase
 set smartcase
 set incsearch
 
+"Set leader to space
+let mapleader = "\<Space>"
+
 "Stuff for CtrlP
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_map = '<Leader>p'
@@ -92,10 +100,10 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 
-"vim airline settings
 
 "var renaming
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+:nnoremap <Leader>r :VroomRunTestFile<CR>
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -109,23 +117,6 @@ let g:syntastic_mode_map = { 'mode': 'active',
         \ 'active_filetypes': [],
         \ 'passive_filetypes': ['html'] }
 
-" UltiSnips completion function that tries to expand a snippet. If there's no
-" snippet for expanding, it checks for completion window and if it's
-" shown, selects first element. If there's no completion window it tries to
-" jump to next placeholder. If there's no placeholder it just returns TAB key
-function! g:UltiSnips_Complete()
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
-        if pumvisible()
-            return "\<C-n>"
-        else
-            call UltiSnips#JumpForwards()
-            if g:ulti_jump_forwards_res == 0
-               return "\<TAB>"
-            endif
-        endif
-    endif
-    return ""
-endfunction
-
-au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:vim_json_syntax_conceal = 0
+let g:vroom_use_vimux = 1
