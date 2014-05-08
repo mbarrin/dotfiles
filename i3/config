@@ -86,7 +86,7 @@ bindsym $mod+d focus child
 bindsym $mod+1 workspace 1 web
 bindsym $mod+2 workspace 2 term
 bindsym $mod+3 workspace 3 irc
-bindsym $mod+4 workspace 4 hipchat
+bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
@@ -98,7 +98,7 @@ bindsym $mod+0 workspace 10
 bindsym $mod+Shift+exclam move container to workspace 1 web
 bindsym $mod+Shift+quotedbl move container to workspace 2 term
 bindsym $mod+Shift+sterling move container to workspace 3 irc
-bindsym $mod+Shift+dollar move container to workspace 4 hipchat
+bindsym $mod+Shift+dollar move container to workspace 4
 bindsym $mod+Shift+percent move container to workspace 5
 bindsym $mod+Shift+asciicircum move container to workspace 6
 bindsym $mod+Shift+ampersand move container to workspace 7
@@ -203,7 +203,7 @@ bindsym $mod+i exec simpleswitcher -now -font "snap-10" -fg "#505050" -bg "#0000
 
 #Autostart programs
 #colour shift
-exec gtk-redshift -l  53.2052:-6.1535 &
+#exec gtk-redshift -l  53.2052:-6.1535 &
 #networking applet.
 exec nm-applet &
 #Disables the fucking beep

@@ -8,84 +8,76 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " Bundles
-Bundle 'Blackrush/vim-gocode'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rails'
-Bundle 'scrooloose/syntastic'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'mhinz/vim-signify'
-Bundle 'Valloric/YouCompleteMe'
+Bundle 'benmills/vimux.git'
+Bundle 'Blackrush/vim-gocode'
 Bundle 'bling/vim-airline'
+Bundle 'chase/vim-ansible-yaml'
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'ekalinin/Dockerfile.vim'
+Bundle 'elzr/vim-json'
+Bundle 'godlygeek/tabular'
+Bundle 'honza/vim-snippets'
+Bundle 'kien/ctrlp.vim'
 Bundle 'majutsushi/tagbar'
+Bundle 'mhinz/vim-signify'
 Bundle 'mhinz/vim-startify'
 Bundle 'rking/ag.vim'
-Bundle 'SirVer/ultisnips'
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'chase/vim-ansible-yaml'
-Bundle 'tpope/vim-vinegar'
 Bundle 'rodjek/vim-puppet'
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'elzr/vim-json'
-Bundle 'honza/vim-snippets'
+Bundle 'scrooloose/syntastic'
+Bundle 'SirVer/ultisnips'
 Bundle 'skalnik/vim-vroom.git'
-Bundle 'benmills/vimux.git'
-Bundle "ekalinin/Dockerfile.vim"
-Bundle "godlygeek/tabular"
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-vinegar'
+Bundle 'Valloric/YouCompleteMe'
 
 syntax enable
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 
-set enc=utf-8
-set fileencoding=utf-8
-
 set autoindent
 set backspace=2
+set cindent shiftwidth=2
 set diffopt=filler,iwhite
+set enc=utf-8
 set expandtab
+set fileencoding=utf-8
 set foldcolumn=2
 set foldlevel=0
 set foldmethod=indent
-set guioptions-=m
-set guioptions-=T
+set guifont=Terminus\ 10
 set guioptions+=LlRrb
 set guioptions-=LlRrb
-set guifont=Terminus\ 10
+set guioptions-=T
+set guioptions-=m
 set hidden
 set history=50
+set ignorecase
+set incsearch
 set laststatus=2
 set linebreak
 set nofen
 set notimeout
 set nottimeout
+set number
+set relativenumber
 set ruler
 set scrolloff=1
+set shiftwidth=2
 set showcmd
 set showmatch
+set smartcase
+set softtabstop=2
+set t_Co=16
 set timeoutlen=10000
 set ttimeoutlen=10000
 set virtualedit=block
 set wildmenu
 
-"colour foo
-set t_Co=16
-"set background=light
 colorscheme solarized
-
-"sets tabs to 2 spaces
-set cindent shiftwidth=2
-set shiftwidth=2
-set softtabstop=2
-
-"line numbers
-"set relativenumber
-set number
-
-"insensitive unless searching for capitals
-set ignorecase
-set smartcase
-set incsearch
 
 "Set leader to space
 let mapleader = "\<Space>"
@@ -99,7 +91,6 @@ let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
-
 
 "var renaming
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>

@@ -21,10 +21,13 @@ DISABLE_AUTO_UPDATE="true"
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
 
-plugins=(heroku fabric pip git git-extras debian rbenv vi-mode fasd github vagrant gem bundler)
+plugins=(heroku fabric pip git git-extras debian rails rbenv vi-mode fasd github vagrant gem bundler golang)
 
-export PATH=~/bin:/usr/local/packer:$PATH
+export GOPATH=$HOME/src/go
+export PATH=~/bin:/usr/local/packer:$PATH:$GOPATH/bin
 source $ZSH/oh-my-zsh.sh
 source /usr/local/bin/aws_zsh_completer.sh
 
+alias be='bundle exec'
 bindkey -M viins '¬' run-help
+JAVA_HOME=/usr/lib/jvm/jdk-7-oracle-x64
