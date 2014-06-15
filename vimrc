@@ -3,36 +3,42 @@ filetype off
 
 " Vundle initialization
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " Bundles
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'benmills/vimux.git'
-Bundle 'Blackrush/vim-gocode'
-Bundle 'bling/vim-airline'
-Bundle 'chase/vim-ansible-yaml'
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'ekalinin/Dockerfile.vim'
-Bundle 'elzr/vim-json'
-Bundle 'godlygeek/tabular'
-Bundle 'honza/vim-snippets'
-Bundle 'kien/ctrlp.vim'
-Bundle 'majutsushi/tagbar'
-Bundle 'mhinz/vim-signify'
-Bundle 'mhinz/vim-startify'
-Bundle 'rking/ag.vim'
-Bundle 'rodjek/vim-puppet'
-Bundle 'scrooloose/syntastic'
-Bundle 'SirVer/ultisnips'
-Bundle 'skalnik/vim-vroom.git'
-Bundle 'thoughtbot/vim-rspec'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-vinegar'
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'benmills/vimux.git'
+Plugin 'Blackrush/vim-gocode'
+Plugin 'bling/vim-airline'
+Plugin 'chase/vim-ansible-yaml'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'ekalinin/Dockerfile.vim'
+Plugin 'elzr/vim-json'
+Plugin 'godlygeek/tabular'
+Plugin 'honza/vim-snippets'
+Plugin 'Keithbsmiley/rspec.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Lokaltog/vim-easymotion'
+Plugin 'majutsushi/tagbar'
+Plugin 'mhinz/vim-signify'
+Plugin 'mhinz/vim-startify'
+Plugin 'moll/vim-node'
+Plugin 'rking/ag.vim'
+Plugin 'rodjek/vim-puppet'
+Plugin 'scrooloose/syntastic'
+Plugin 'SirVer/ultisnips'
+Plugin 'sjl/gundo.vim'
+Plugin 'skalnik/vim-vroom.git'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-vinegar'
+Plugin 'Valloric/YouCompleteMe'
+
+call vundle#end()
 
 syntax enable
 filetype plugin indent on
@@ -95,6 +101,7 @@ let g:ctrlp_switch_buffer = 0
 "var renaming
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 :nnoremap <Leader>r :VroomRunTestFile<CR>
+:nnoremap <F5> :GundoToggle<CR>
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -111,3 +118,5 @@ let g:syntastic_mode_map = { 'mode': 'active',
 let g:UltiSnipsExpandTrigger="<c-j>"
 let g:vim_json_syntax_conceal = 0
 let g:vroom_use_vimux = 1
+let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_javascript_checkers = ['jshint']
