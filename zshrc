@@ -24,7 +24,7 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(heroku fabric pip git git-extras debian rails rbenv vi-mode fasd github vagrant gem bundler golang)
 
 export GOPATH=$HOME/src/go
-export PATH=~/bin:/usr/local/packer:$PATH:$GOPATH/bin
+export PATH=~/bin:/usr/local/packer:$PATH:$GOPATH/bin:~/.npm
 source $ZSH/oh-my-zsh.sh
 source /usr/local/bin/aws_zsh_completer.sh
 
