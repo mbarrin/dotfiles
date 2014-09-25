@@ -10,13 +10,13 @@ Plugin 'gmarik/vundle'
 " Bundles
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'benmills/vimux.git'
-Plugin 'Blackrush/vim-gocode'
 Plugin 'bling/vim-airline'
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'elzr/vim-json'
 Plugin 'godlygeek/tabular'
+Plugin 'gregsexton/gitv'
 Plugin 'honza/vim-snippets'
 Plugin 'Keithbsmiley/rspec.vim'
 Plugin 'kien/ctrlp.vim'
@@ -26,7 +26,6 @@ Plugin 'mhinz/vim-signify'
 Plugin 'mhinz/vim-startify'
 Plugin 'moll/vim-node'
 Plugin 'rking/ag.vim'
-Plugin 'rodjek/vim-puppet'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'sjl/gundo.vim'
@@ -37,6 +36,8 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-vinegar'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'fatih/vim-go'
 
 call vundle#end()
 
@@ -88,7 +89,7 @@ colorscheme solarized
 "Set leader to space
 let mapleader = "\<Space>"
 
-"Stuff for CtrlP
+"Plugin settings
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_map = '<Leader>p'
 let g:ctrlp_match_window_bottom = 0
@@ -98,7 +99,17 @@ let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 
-"var renaming
+let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_javascript_checkers = ['jshint']
+let g:syntastic_mode_map = { 'mode': 'active',
+        \ 'active_filetypes': [],
+        \ 'passive_filetypes': ['html'] }
+
+let g:UltiSnipsExpandTrigger="<c-j>"
+let g:vim_json_syntax_conceal = 0
+let g:vroom_use_vimux = 1
+
+"custom commands
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 :nnoremap <Leader>r :VroomRunTestFile<CR>
 :nnoremap <F5> :GundoToggle<CR>
@@ -109,14 +120,3 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
-
-" On by default, turn it off for html
-let g:syntastic_mode_map = { 'mode': 'active',
-        \ 'active_filetypes': [],
-        \ 'passive_filetypes': ['html'] }
-
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:vim_json_syntax_conceal = 0
-let g:vroom_use_vimux = 1
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_javascript_checkers = ['jshint']
