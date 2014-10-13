@@ -1,5 +1,5 @@
-URxvt*font: xft:Terminus:size=14
-URxvt*boldFont: xft:Terminus:size=14
+URxvt*font: xft:Terminus:size=12
+URxvt*boldFont: xft:Terminus:size=12
 
 URxvt*iso14755: False
 URxvt*iso14755_52: False

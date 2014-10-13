@@ -190,8 +190,8 @@ bindsym $mod+equal exec amixer -q set Master 2%+ unmute
 
 #Brightness down, Brightness up
 #Doesn't work on Elitebook 8460p with OSS driver. Patch needs to be applied.
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 1
+bindsym XF86MonBrightnessUp exec xbacklight -inc 1
 
 #Nautilus
 bindsym $mod+Shift+U exec nautilus --no-desktop --browser
@@ -207,7 +207,7 @@ bindsym $mod+i exec simpleswitcher -now -font "snap-10" -fg "#505050" -bg "#0000
 #networking applet.
 exec nm-applet &
 #Disables the fucking beep
-exec xset b off
+exec xset -b
 #Starts urxvt deamon
 exec urxvtd -q -o -f
 

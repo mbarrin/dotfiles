@@ -24,10 +24,10 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(heroku fabric pip git git-extras debian rails rbenv vi-mode fasd github vagrant gem bundler golang)
 
 export GOPATH=$HOME/src/go
-export PATH=~/bin:/usr/local/packer:$PATH:$GOPATH/bin:~/.npm
+export PATH=~/bin:/usr/local/packer:/usr/local/terraform:$PATH:$GOPATH/bin:~/.npm
 source $ZSH/oh-my-zsh.sh
 source /usr/local/bin/aws_zsh_completer.sh
 
 alias be='bundle exec'
 bindkey -M viins '¬' run-help
-JAVA_HOME=/usr/lib/jvm/jdk-7-oracle-x64
+JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64

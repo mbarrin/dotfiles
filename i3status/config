@@ -13,13 +13,13 @@ order += "disk /"
 order += "time"
 
 wireless wlan0 {
-        format_up = "%quality"
+        format_up = "%quality %ip"
         format_down = "W↓"
 }
 
 ethernet eth0 {
         # if you use %speed, i3status requires root privileges
-        format_up = "E↑"
+        format_up = "E %ip"
         format_down = "E↓"
 }
 
