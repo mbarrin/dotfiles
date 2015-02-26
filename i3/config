@@ -24,7 +24,7 @@ bindsym $mod+Return exec urxvtc
 bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec simpleswitcher -rnow -font "snap-10" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
+bindsym $mod+p exec rofi -rnow -font "snap-10" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
 
 # change focus
 bindsym $mod+h focus left
@@ -199,7 +199,10 @@ bindsym $mod+Shift+U exec nautilus --no-desktop --browser
 #i3-quickswitch
 
 #simpleswitcher
-bindsym $mod+i exec simpleswitcher -now -font "snap-10" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
+#bindsym $mod+i exec simpleswitcher -now -font "snap-10" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
+
+#rofi
+bindsym $mod+i exec rofi -now -font "snap-10" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
 
 #Autostart programs
 #colour shift
