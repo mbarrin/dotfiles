@@ -5,7 +5,7 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 " Bundles
 Plugin 'altercation/vim-colors-solarized'
@@ -15,9 +15,14 @@ Plugin 'chase/vim-ansible-yaml'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'ekalinin/Dockerfile.vim'
 Plugin 'elzr/vim-json'
+Plugin 'fatih/vim-go'
 Plugin 'godlygeek/tabular'
 Plugin 'gregsexton/gitv'
 Plugin 'honza/vim-snippets'
+Plugin 'jwhitley/vim-matchit'
+Plugin 'junegunn/goyo.vim'
+Plugin 'junegunn/limelight.vim'
+Plugin 'kchmck/vim-coffee-script'
 Plugin 'Keithbsmiley/rspec.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
@@ -25,19 +30,21 @@ Plugin 'majutsushi/tagbar'
 Plugin 'mhinz/vim-signify'
 Plugin 'mhinz/vim-startify'
 Plugin 'moll/vim-node'
+Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'regedarek/ZoomWin'
 Plugin 'rking/ag.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'sjl/gundo.vim'
 Plugin 'skalnik/vim-vroom.git'
 Plugin 'tpope/vim-bundler'
+Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-vinegar'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'fatih/vim-go'
 
 call vundle#end()
 
