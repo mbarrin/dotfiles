@@ -53,6 +53,7 @@ filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 
 set autoindent
+set background=dark
 set backspace=2
 set cindent shiftwidth=2
 set diffopt=filler,iwhite
