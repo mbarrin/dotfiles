@@ -2,7 +2,7 @@ set nocompatible
 filetype off
 
 " Vundle initialization
-set rtp+=~/.vim/bundle/vundle/
+set rtp+=~/.vim/bundle/Vundle.vim/
 call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
@@ -33,6 +33,7 @@ Plugin 'moll/vim-node'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'regedarek/ZoomWin'
 Plugin 'rking/ag.vim'
+Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'SirVer/ultisnips'
 Plugin 'sjl/gundo.vim'
