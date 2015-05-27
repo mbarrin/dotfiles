@@ -2,10 +2,10 @@ set nocompatible
 filetype off
 
 " Vundle initialization
-set rtp+=~/.vim/bundle/Vundle.vim/
+set rtp+=~/.vim/bundle/Vundle
 call vundle#begin()
 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'gmarik/Vundle'
 
 " Bundles
 Plugin 'altercation/vim-colors-solarized'
