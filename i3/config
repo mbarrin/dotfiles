@@ -24,7 +24,7 @@ bindsym $mod+Return exec urxvtc
 bindsym $mod+Shift+Q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec rofi -rnow -font "snap-10" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
+bindsym $mod+p exec rofi -show run
 
 # change focus
 bindsym $mod+h focus left
@@ -196,13 +196,11 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 1
 #Nautilus
 bindsym $mod+Shift+U exec nautilus --no-desktop --browser
 
-#i3-quickswitch
-
-#simpleswitcher
-#bindsym $mod+i exec simpleswitcher -now -font "snap-10" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
-
 #rofi
-bindsym $mod+i exec rofi -now -font "snap-10" -fg "#505050" -bg "#000000" -hlfg "#ffb964" -hlbg "#000000" -o 85
+bindsym $mod+i exec rofi -show window
+
+#scrot
+bindsym $mod+o exec "scrot -e 'mv $f ~/Pictures/scrot/'"
 
 #Autostart programs
 #colour shift
@@ -213,5 +211,4 @@ exec nm-applet &
 exec xset -b
 #Starts urxvt deamon
 exec urxvtd -q -o -f
-
-for_window [class="Gmrun" instance="gmrun"] floating enable
+exec xrandr --output HDMI1 --off --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal
