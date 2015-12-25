@@ -28,7 +28,6 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'majutsushi/tagbar'
 Plugin 'mhinz/vim-signify'
-Plugin 'mhinz/vim-startify'
 Plugin 'moll/vim-node'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'regedarek/ZoomWin'
@@ -122,6 +121,7 @@ let g:vroom_use_vimux = 1
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 :nnoremap <Leader>r :VroomRunTestFile<CR>
 :nnoremap <F5> :GundoToggle<CR>
+:nnoremap <Leader>o :NERDTreeToggle<CR>
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
