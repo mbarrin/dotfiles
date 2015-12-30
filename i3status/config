@@ -9,22 +9,31 @@ order += "battery 1"
 order += "volume master"
 order += "disk /"
 order += "time"
+order += "tztime berlin"
 
 wireless wlp1s0 {
-  format_up = " %quality %ip"
+  format_up = "%quality %ip"
   format_down = "W↓"
 }
 
 battery 1 {
-  format = "%percentage %remaining %consumption"
+  format = "%status %percentage %remaining %consumption"
   hide_seconds = true
   last_full_capacity = true
   low_threshold = 60
   threshold_type = time
+  status_chr = "^"
+  status_bat = "v"
+  status_full = "="
 }
 
 time {
-  format = "%Y-%m-%d %H:%M"
+  format = "%Y-%m-%d %H:%M %A"
+}
+
+tztime berlin {
+  format = "32c3: %H:%M"
+  timezone = "Europe/Berlin"
 }
 
 disk "/" {
