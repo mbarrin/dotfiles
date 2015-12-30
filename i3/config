@@ -23,7 +23,7 @@ bindsym $mod+Return exec urxvtc
 # kill focused window
 bindsym $mod+Shift+Q kill
 
-# start dmenu (a program launcher)
+# start rofi for starting a process
 bindsym $mod+p exec rofi -show run
 
 # change focus
@@ -32,23 +32,11 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+H move left
 bindsym $mod+Shift+J move down
 bindsym $mod+Shift+K move up
 bindsym $mod+Shift+L move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+b split h
@@ -106,11 +94,6 @@ bindsym $mod+Shift+asterisk move container to workspace 8
 bindsym $mod+Shift+parenleft move container to workspace 9
 bindsym $mod+Shift+parenright move container to workspace 10
 
-# move workspace to different output (monitor)
-
-bindsym $mod+z move workspace to output DP1
-bindsym $mod+x move workspace to output eDP1
-
 # reload the configuration file
 bindsym $mod+Shift+C reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
@@ -131,12 +114,6 @@ mode "resize" {
         bindsym k resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym 113 resize shrink width 10 px or 10 ppt
-        bindsym 116 resize grow height 10 px or 10 ppt
-        bindsym 111 resize shrink height 10 px or 10 ppt
-        bindsym 114 resize grow width 10 px or 10 ppt
-
         # back to normal: Enter or Escape
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -149,19 +126,13 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
         position top
-#       output LVDS
-#       output DisplayPort-0
-#       output VGA-0
         colors {
-#            background #999999
-#            statusline #222222
 
             Focused_workspace  #FFFFFF #00FF00
             active_workspace   #FFFFFF #888875
             inactive_workspace #FFFFFF #222222
             urgent_workspace   #000000 #FF0000
         }
-#mode hide
 }
 
 #Colours for windows
@@ -175,8 +146,8 @@ bindsym $mod+bracketleft move scratchpad
 bindsym $mod+bracketright scratchpad show
 
 #Custom bindings
-#=
-#locks screen. Might make it nicer. White is so last year.
+#
+#locks screen.
 bindsym Mod1+Control+l exec i3lock -c `openssl rand -hex 3`
 
 #Volume down, Volume up, Mute Laptop keyboard
@@ -184,12 +155,7 @@ bindsym XF86AudioLowerVolume exec amixer -q set Master 2%- unmute
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 2%+ unmute
 bindsym XF86AudioMute exec amixer -q set Master toggle
 
-#Volume down, Volume up, Mute Filco
-bindsym $mod+minus exec amixer -q set Master 2%- unmute
-bindsym $mod+equal exec amixer -q set Master 2%+ unmute
-
 #Brightness down, Brightness up
-#Doesn't work on Elitebook 8460p with OSS driver. Patch needs to be applied.
 bindsym XF86MonBrightnessDown exec xbacklight -dec 1
 bindsym XF86MonBrightnessUp exec xbacklight -inc 1
 
@@ -203,12 +169,12 @@ bindsym $mod+i exec rofi -show window
 bindsym $mod+o exec "scrot -e 'mv $f ~/Pictures/scrot/'"
 
 #Autostart programs
-#colour shift
-#exec gtk-redshift -l  53.2052:-6.1535 &
-#networking applet.
+
+# networking applet.
 exec nm-applet &
-#Disables the fucking beep
+# Disables the fucking beep
 exec xset -b
-#Starts urxvt deamon
+# Starts urxvt deamon
 exec urxvtd -q -o -f
+# Use a sane fucking res
 exec xrandr --output HDMI1 --off --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal
