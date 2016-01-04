@@ -28,7 +28,6 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'majutsushi/tagbar'
 Plugin 'mhinz/vim-signify'
-Plugin 'mhinz/vim-startify'
 Plugin 'moll/vim-node'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'regedarek/ZoomWin'
@@ -42,6 +41,7 @@ Plugin 'tpope/vim-bundler'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-rbenv'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-vinegar'
 Plugin 'Valloric/YouCompleteMe'
@@ -104,11 +104,13 @@ let g:ctrlp_map = '<Leader>p'
 let g:ctrlp_match_window_bottom = 0
 let g:ctrlp_match_window_reversed = 0
 let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dotfiles = 0
 let g:ctrlp_switch_buffer = 0
 
 let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_ruby_rubocop_exec = '/Users/matthew/bin/rubocop.sh'
 let g:syntastic_javascript_checkers = ['jshint']
 let g:syntastic_mode_map = { 'mode': 'active',
         \ 'active_filetypes': [],
@@ -122,6 +124,7 @@ let g:vroom_use_vimux = 1
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 :nnoremap <Leader>r :VroomRunTestFile<CR>
 :nnoremap <F5> :GundoToggle<CR>
+:nnoremap <Leader>o :NERDTreeToggle<CR>
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
