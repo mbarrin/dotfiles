@@ -21,13 +21,53 @@ DISABLE_AUTO_UPDATE="true"
 # Uncomment following line if you want red dots to be displayed while waiting for completion
 # COMPLETION_WAITING_DOTS="true"
 
-plugins=(heroku fabric pip git git-extras debian rails rbenv vi-mode fasd github vagrant gem bundler golang)
+#plugins=(heroku fabric pip git git-extras debian rails rbenv vi-mode fasd vagrant gem bundler golang)
+plugins=(vi-mode fasd rbenv)
 
 export GOPATH=$HOME/src/go
-export PATH=~/bin:/usr/local/packer:/usr/local/terraform:$PATH:$GOPATH/bin:~/.npm
+export PATH=$PATH:$GOPATH/bin
 source $ZSH/oh-my-zsh.sh
 source /usr/local/bin/aws_zsh_completer.sh
 
-alias be='bundle exec'
 bindkey -M viins '¬' run-help
-JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+
+# Because FUCK Spring.
+export DISABLE_SPRING=true
+
+export NVM_DIR="/Users/matthew/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+
+# pilot stuff
+export PATH=$HOME/.pilot/shims:$HOME/.pilot/bin:$PATH
+eval $(pilot env)
+alias pei='pilot exec intercom'
+alias be='bundle exec'
+
+# git stuff
+alias ga='git add'
+alias gb='git branch'
+alias gc='git commit -v'
+alias gco='git checkout'
+alias gcm='git checkout master'
+alias gd='git diff'
+alias gpr'git pull-request'
+alias grbi='git rebase -i'
+alias gst='git status'
+alias gl='git pull'
+
+function current_branch() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
+  ref=$(git rev-parse --short HEAD 2> /dev/null) || return
+  echo ${ref#refs/heads/}
+}
+
+alias ggpull='git pull origin $(current_branch)'
+alias ggpush='git push origin $(current_branch)'
+
+export mongo26='/usr/local/Cellar/mongodb26/2.6.11'
+export mongo30='/usr/local/Cellar/mongodb30/3.0.12'
+
+# pilot autocomplete test
+#compdef _function pilot
