@@ -1,4 +1,13 @@
 # Path to your oh-my-zsh configuration.
+
+PROFILE_STARTUP=true
+if [[ "$PROFILE_STARTUP" == true ]]; then
+    # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+    PS4=$'%D{%M%S%.} %N:%i> '
+    exec 3>&2 2>$HOME/tmp/startlog.$$
+    setopt xtrace prompt_subst
+fi
+
 ZSH=$HOME/.oh-my-zsh
 
 ZSH_THEME="moju"
@@ -12,7 +21,6 @@ export GOPATH=${HOME}
 source $ZSH/oh-my-zsh.sh
 source /usr/local/bin/aws_zsh_completer.sh
 
-bindkey -M viins '¬' run-help
 export PATH=$HOME/bin:$PATH
 
 bindkey -M viins '¬' run-help
@@ -55,9 +63,6 @@ function current_branch() {
 
 alias ggpull='git pull origin $(current_branch)'
 alias ggpush='git push origin $(current_branch)'
-
-export mongo26='/usr/local/Cellar/mongodb26/2.6.11'
-export mongo30='/usr/local/Cellar/mongodb30/3.0.12'
 
 export PATH="$HOME/.yarn/bin:$PATH"
 

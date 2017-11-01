@@ -1,46 +1,42 @@
-set nocompatible
-filetype off
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
 
-" Vundle initialization
-set rtp+=~/.vim/bundle/Vundle
-call vundle#begin()
 
-Plugin 'gmarik/Vundle'
+call plug#begin('~/.vim/plugged')
 
 " Bundles
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'bling/vim-airline'
-Plugin 'chase/vim-ansible-yaml'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'elzr/vim-json'
-Plugin 'fatih/vim-go'
-Plugin 'gregsexton/gitv'
-Plugin 'jwhitley/vim-matchit'
-Plugin 'Keithbsmiley/rspec.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Lokaltog/vim-easymotion'
-Plugin 'majutsushi/tagbar'
-Plugin 'mhinz/vim-signify'
-Plugin 'regedarek/ZoomWin'
-Plugin 'rking/ag.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'sjl/gundo.vim'
-Plugin 'tpope/vim-bundler'
-Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-rbenv'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-vinegar'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'vim-ruby/vim-ruby'
+Plug '/usr/local/opt/fzf'
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'fatih/vim-go'
+Plug 'gregsexton/gitv'
+Plug 'hashivim/vim-terraform'
+Plug 'junegunn/fzf.vim'
+Plug 'Keithbsmiley/rspec.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'mhinz/vim-grepper'
+Plug 'mhinz/vim-signify'
+Plug 'regedarek/ZoomWin'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'scrooloose/nerdcommenter'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-vinegar'
+Plug 'Valloric/YouCompleteMe'
+Plug 'vim-ruby/vim-ruby'
+Plug 'yssl/QFEnter'
 
-call vundle#end()
+call plug#end()
 
-syntax enable
-filetype plugin indent on
+set nocompatible
 set omnifunc=syntaxcomplete#Complete
 
 set autoindent
@@ -69,7 +65,6 @@ set nofen
 set notimeout
 set nottimeout
 set number
-set relativenumber
 set ruler
 set scrolloff=1
 set shiftwidth=2
@@ -81,6 +76,7 @@ set t_Co=16
 set timeoutlen=10000
 set ttimeoutlen=10000
 set virtualedit=block
+set wildmode=longest,list,full
 set wildmenu
 
 colorscheme solarized
@@ -89,15 +85,16 @@ colorscheme solarized
 let mapleader = "\<Space>"
 
 "Plugin settings
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_map = '<Leader>p'
-let g:ctrlp_match_window_bottom = 0
-let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_dotfiles = 0
-let g:ctrlp_switch_buffer = 0
+"let g:ctrlp_cmd = 'CtrlP'
+"let g:ctrlp_map = '<Leader>p'
+"let g:ctrlp_match_window_bottom = 0
+"let g:ctrlp_match_window_reversed = 0
+"let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+"let g:ctrlp_user_command = 'ag %s -l --ignore tags --nocolor -g ""'
+"let g:ctrlp_working_path_mode = 0
+"let g:ctrlp_dotfiles = 0
+"let g:ctrlp_switch_buffer = 0
+"let g:ctrlp_match_window = 'results:50' " overcome limit imposed by max height
 
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_ruby_rubocop_exec = '/Users/matthew/bin/rubocop.sh'
@@ -106,15 +103,18 @@ let g:syntastic_mode_map = { 'mode': 'active',
         \ 'active_filetypes': [],
         \ 'passive_filetypes': ['html'] }
 
-let g:UltiSnipsExpandTrigger="<c-j>"
-let g:vim_json_syntax_conceal = 0
-let g:vroom_use_vimux = 1
+let g:qfenter_vopen_map = ['<C-v>']
+let g:qfenter_hopen_map = ['<C-CR>', '<C-s>', '<C-x>']
+let g:qfenter_topen_map = ['<C-t>']
+
+nmap gs <plug>(GrepperOperator)
+xmap gs <plug>(GrepperOperator)
 
 "custom commands
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
-:nnoremap <Leader>r :VroomRunTestFile<CR>
-:nnoremap <F5> :GundoToggle<CR>
 :nnoremap <Leader>o :NERDTreeToggle<CR>
+:nnoremap <Leader>g :Grepper -tool ag<cr>
+:nnoremap <Leader>p :Files<cr>
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
