@@ -32,7 +32,7 @@ DISABLE_AUTO_UPDATE="true"
 
 #plugins=(heroku fabric pip git git-extras debian rails rbenv vi-mode fasd vagrant gem bundler golang)
 #plugins=(vi-mode fasd rbenv github)
-plugins=(vi-mode)
+plugins=(vi-mode rbenv)
 
 export GOPATH=$HOME/src/go
 export PATH=$PATH:$GOPATH/bin
@@ -44,17 +44,17 @@ bindkey -M viins '¬' run-help
 # Because FUCK Spring.
 export DISABLE_SPRING=true
 
-# export NVM_DIR="/Users/matthew/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+export NVM_DIR="/Users/matthew/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 
 # pilot stuff
 export PATH=$HOME/.pilot/shims:$HOME/.pilot/bin:$PATH
-#eval $(pilot env)
 alias penv='eval $(pilot env)'
 export INTERCOM_USER="matthew"
 alias pei='pilot exec intercom'
+source ~/src/intercom/script/env
 
 alias be='bundle exec'
 
@@ -69,6 +69,7 @@ alias gpr='git pull-request'
 alias grbi='git rebase -i'
 alias gst='git status'
 alias gl='git pull'
+alias gcd="cd `git rev-parse --show-toplevel`"
 
 function current_branch() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || \
