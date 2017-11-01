@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh configuration.
 
-PROFILE_STARTUP=true
+PROFILE_STARTUP=false
 if [[ "$PROFILE_STARTUP" == true ]]; then
     # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
     PS4=$'%D{%M%S%.} %N:%i> '
@@ -32,13 +32,6 @@ export NVM_DIR="/Users/matthew/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 export PATH="$HOME/.rbenv/bin:$PATH"
-
-# pilot stuff
-export PATH=$HOME/.pilot/shims:$HOME/.pilot/bin:$PATH
-alias penv='eval $(pilot env)'
-export INTERCOM_USER="matthew"
-alias pei='pilot exec intercom'
-source ~/src/intercom/script/env
 
 alias be='bundle exec'
 
