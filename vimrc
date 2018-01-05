@@ -24,7 +24,6 @@ Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-signify'
 Plug 'regedarek/ZoomWin'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
@@ -32,6 +31,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-ruby/vim-ruby'
+Plug 'w0rp/ale'
 Plug 'yssl/QFEnter'
 
 call plug#end()
@@ -67,7 +67,6 @@ set nottimeout
 set number
 set ruler
 set scrolloff=1
-set shiftwidth=2
 set showcmd
 set showmatch
 set smartcase
@@ -113,8 +112,9 @@ xmap gs <plug>(GrepperOperator)
 "custom commands
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 :nnoremap <Leader>o :NERDTreeToggle<CR>
-:nnoremap <Leader>g :Grepper -tool ag<cr>
+:nnoremap <Leader>g :Grepper -tool rg<cr>
 :nnoremap <Leader>p :Files<cr>
+:nnoremap <Leader>i :Buffers<cr>
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
