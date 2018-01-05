@@ -83,18 +83,6 @@ colorscheme solarized
 "Set leader to space
 let mapleader = "\<Space>"
 
-"Plugin settings
-"let g:ctrlp_cmd = 'CtrlP'
-"let g:ctrlp_map = '<Leader>p'
-"let g:ctrlp_match_window_bottom = 0
-"let g:ctrlp_match_window_reversed = 0
-"let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
-"let g:ctrlp_user_command = 'ag %s -l --ignore tags --nocolor -g ""'
-"let g:ctrlp_working_path_mode = 0
-"let g:ctrlp_dotfiles = 0
-"let g:ctrlp_switch_buffer = 0
-"let g:ctrlp_match_window = 'results:50' " overcome limit imposed by max height
-
 let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_ruby_rubocop_exec = '/Users/matthew/bin/rubocop.sh'
 let g:syntastic_javascript_checkers = ['jshint']

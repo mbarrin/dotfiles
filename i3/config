@@ -71,9 +71,9 @@ bindsym $mod+d focus child
 #bindsym $mod+Shift+1 move workspace 1; workspace 1
 
 # switch Gto workspace
-bindsym $mod+1 workspace 1 web
-bindsym $mod+2 workspace 2 term
-bindsym $mod+3 workspace 3 irc
+bindsym $mod+1 workspace 1web
+bindsym $mod+2 workspace 2term
+bindsym $mod+3 workspace 3irc
 bindsym $mod+4 workspace 4
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
@@ -83,9 +83,9 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+exclam move container to workspace 1 web
-bindsym $mod+Shift+quotedbl move container to workspace 2 term
-bindsym $mod+Shift+sterling move container to workspace 3 irc
+bindsym $mod+Shift+exclam move container to workspace 1web
+bindsym $mod+Shift+quotedbl move container to workspace 2term
+bindsym $mod+Shift+sterling move container to workspace 3irc
 bindsym $mod+Shift+dollar move container to workspace 4
 bindsym $mod+Shift+percent move container to workspace 5
 bindsym $mod+Shift+asciicircum move container to workspace 6
@@ -100,6 +100,8 @@ bindsym $mod+Shift+C reload
 bindsym $mod+Shift+R restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+E exit
+
+workspace_auto_back_and_forth yes
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -126,12 +128,15 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
         position top
+        separator_symbol ":"
+        strip_workspace_numbers yes
         colors {
 
-            Focused_workspace  #FFFFFF #00FF00
+            focused_workspace  #FFFFFF #00FF00
             active_workspace   #FFFFFF #888875
             inactive_workspace #FFFFFF #222222
             urgent_workspace   #000000 #FF0000
+            separator          #9999FF
         }
 }
 
@@ -177,4 +182,6 @@ exec xset -b
 # Starts urxvt deamon
 exec urxvtd -q -o -f
 # Use a sane fucking res
-exec xrandr --output HDMI1 --off --output VIRTUAL1 --off --output eDP1 --mode 1920x1080 --pos 0x0 --rotate normal
+exec xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal
+
+exec gtk-redshift
