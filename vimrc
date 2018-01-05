@@ -83,13 +83,6 @@ colorscheme solarized
 "Set leader to space
 let mapleader = "\<Space>"
 
-let g:syntastic_ruby_checkers = ['rubocop']
-let g:syntastic_ruby_rubocop_exec = '/Users/matthew/bin/rubocop.sh'
-let g:syntastic_javascript_checkers = ['jshint']
-let g:syntastic_mode_map = { 'mode': 'active',
-        \ 'active_filetypes': [],
-        \ 'passive_filetypes': ['html'] }
-
 let g:qfenter_vopen_map = ['<C-v>']
 let g:qfenter_hopen_map = ['<C-CR>', '<C-s>', '<C-x>']
 let g:qfenter_topen_map = ['<C-t>']
