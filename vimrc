@@ -5,7 +5,11 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 
-call plug#begin('~/.vim/plugged')
+if has('nvim')
+  call plug#begin('~/.local/share/nvim/plugged')
+else
+  call plug#begin('~/.vim/plugged')
+endif
 
 " Bundles
 Plug '/usr/local/opt/fzf'
@@ -18,7 +22,6 @@ Plug 'gregsexton/gitv'
 Plug 'hashivim/vim-terraform'
 Plug 'junegunn/fzf.vim'
 Plug 'Keithbsmiley/rspec.vim'
-Plug 'kien/ctrlp.vim'
 Plug 'Lokaltog/vim-easymotion'
 Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-signify'
@@ -86,6 +89,8 @@ let mapleader = "\<Space>"
 let g:qfenter_vopen_map = ['<C-v>']
 let g:qfenter_hopen_map = ['<C-CR>', '<C-s>', '<C-x>']
 let g:qfenter_topen_map = ['<C-t>']
+
+let g:terraform_fmt_on_save = 1
 
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
