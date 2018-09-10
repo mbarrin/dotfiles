@@ -18,8 +18,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'fatih/vim-go'
+Plug 'ervandew/supertab'
 Plug 'gregsexton/gitv'
 Plug 'hashivim/vim-terraform'
+let g:terraform_fmt_on_save = 1
 Plug 'junegunn/fzf.vim'
 Plug 'Keithbsmiley/rspec.vim'
 Plug 'Lokaltog/vim-easymotion'
@@ -32,10 +34,26 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-Plug 'Valloric/YouCompleteMe'
+
+
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+let g:deoplete#enable_at_startup = 1
+
 Plug 'vim-ruby/vim-ruby'
+
 Plug 'w0rp/ale'
+
 Plug 'yssl/QFEnter'
+let g:qfenter_vopen_map = ['<C-v>']
+let g:qfenter_hopen_map = ['<C-CR>', '<C-s>', '<C-x>']
+let g:qfenter_topen_map = ['<C-t>']
+
 
 call plug#end()
 
@@ -86,11 +104,10 @@ colorscheme solarized
 "Set leader to space
 let mapleader = "\<Space>"
 
-let g:qfenter_vopen_map = ['<C-v>']
-let g:qfenter_hopen_map = ['<C-CR>', '<C-s>', '<C-x>']
-let g:qfenter_topen_map = ['<C-t>']
-
-let g:terraform_fmt_on_save = 1
+if has('nvim')
+  let g:python2_host_prog = '/usr/local/bin/python'
+  let g:python3_host_prog = '/usr/local/bin/python3'
+end
 
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
@@ -108,4 +125,3 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
-
