@@ -4,7 +4,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
-
 if has('nvim')
   call plug#begin('~/.local/share/nvim/plugged')
 else
@@ -12,7 +11,6 @@ else
 endif
 
 " Bundles
-Plug '/usr/local/opt/fzf'
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -22,6 +20,7 @@ Plug 'ervandew/supertab'
 Plug 'gregsexton/gitv'
 Plug 'hashivim/vim-terraform'
 let g:terraform_fmt_on_save = 1
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Keithbsmiley/rspec.vim'
 Plug 'Lokaltog/vim-easymotion'
@@ -34,6 +33,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
+Plug 'mustache/vim-mustache-handlebars'
 
 
 if has('nvim')
@@ -44,6 +44,8 @@ else
   Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
+
+Plug 'deoplete-plugins/deoplete-go'
 
 Plug 'vim-ruby/vim-ruby'
 
@@ -103,11 +105,6 @@ colorscheme solarized
 
 "Set leader to space
 let mapleader = "\<Space>"
-
-if has('nvim')
-  let g:python2_host_prog = '/usr/local/bin/python'
-  let g:python3_host_prog = '/usr/local/bin/python3'
-end
 
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)

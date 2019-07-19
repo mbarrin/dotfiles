@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh configuration.
 
-PROFILE_STARTUP=true
+PROFILE_STARTUP=false
 if [[ "$PROFILE_STARTUP" == true ]]; then
     # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
     PS4=$'%D{%M%S%.} %N:%i> '
@@ -43,6 +43,7 @@ alias be='bundle exec'
 
 # git stuff
 alias ga='git add'
+alias gap='git add --patch'
 alias gb='git branch'
 alias gc='git commit -v'
 alias gco='git checkout'
@@ -52,7 +53,8 @@ alias gpr='git pull-request'
 alias gr='git rm'
 alias grbi='git rebase -i'
 alias gst='git status'
-#alias gcd="cd `git rev-parse --show-toplevel`"
+
+alias vim='nvim'
 
 function current_branch() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || \
@@ -76,6 +78,12 @@ if [ $commands[fasd] ]; then # check if fasd is installed
   alias o='a -e open'
 fi
 
+unalias z
+z() {
+  local dir
+  dir="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${dir}" || return 1
+}
+
 # Assume role stuff
 function aws_account_info {
   [ "$AWS_ACCOUNT_NAME" ] && [ "$AWS_ACCOUNT_ROLE" ] && echo "$AWS_ACCOUNT_NAME:$AWS_ACCOUNT_ROLE"
@@ -89,3 +97,7 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
     unsetopt xtrace
     exec 2>&3 3>&-
 fi
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(intercom-profile)"
