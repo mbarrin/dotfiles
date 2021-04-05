@@ -33,7 +33,6 @@ Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'nvie/vim-flake8'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
