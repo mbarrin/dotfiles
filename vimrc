@@ -1,9 +1,8 @@
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+if empty(glob('~/.local/share/nvim/site/autoload/plug.vim'))
+  silent !curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
-
 
 if has('nvim')
   call plug#begin('~/.local/share/nvim/plugged')
@@ -12,7 +11,6 @@ else
 endif
 
 " Bundles
-Plug '/usr/local/opt/fzf'
 Plug 'altercation/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -22,10 +20,10 @@ Plug 'ervandew/supertab'
 Plug 'gregsexton/gitv'
 Plug 'hashivim/vim-terraform'
 let g:terraform_fmt_on_save = 1
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'Keithbsmiley/rspec.vim'
 Plug 'Lokaltog/vim-easymotion'
-Plug 'mhinz/vim-grepper'
 Plug 'mhinz/vim-signify'
 Plug 'regedarek/ZoomWin'
 Plug 'scrooloose/nerdtree'
@@ -34,7 +32,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-vinegar'
-
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'nvie/vim-flake8'
 
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -45,15 +44,14 @@ else
 endif
 let g:deoplete#enable_at_startup = 1
 
+Plug 'deoplete-plugins/deoplete-go'
+Plug 'deoplete-plugins/deoplete-jedi'
+"let g:python3_host_prog = '/home/matthew/.pyenv/versions/neovim3/bin/python'
+
 Plug 'vim-ruby/vim-ruby'
 
 Plug 'w0rp/ale'
-
-Plug 'yssl/QFEnter'
-let g:qfenter_vopen_map = ['<C-v>']
-let g:qfenter_hopen_map = ['<C-CR>', '<C-s>', '<C-x>']
-let g:qfenter_topen_map = ['<C-t>']
-
+let g:ale_ruby_rubocop_executable = 'bundle'
 
 call plug#end()
 
@@ -104,18 +102,13 @@ colorscheme solarized
 "Set leader to space
 let mapleader = "\<Space>"
 
-if has('nvim')
-  let g:python2_host_prog = '/usr/local/bin/python'
-  let g:python3_host_prog = '/usr/local/bin/python3'
-end
-
 nmap gs <plug>(GrepperOperator)
 xmap gs <plug>(GrepperOperator)
 
 "custom commands
 :nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 :nnoremap <Leader>o :NERDTreeToggle<CR>
-:nnoremap <Leader>g :Grepper -tool rg<cr>
+:nnoremap <Leader>g :Rg<cr>
 :nnoremap <Leader>p :Files<cr>
 :nnoremap <Leader>i :Buffers<cr>
 
