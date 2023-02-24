@@ -74,7 +74,7 @@ bindsym $mod+d focus child
 bindsym $mod+1 workspace 1web
 bindsym $mod+2 workspace 2term
 bindsym $mod+3 workspace 3irc
-bindsym $mod+4 workspace 4
+bindsym $mod+4 workspace 4slack
 bindsym $mod+5 workspace 5
 bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
@@ -86,7 +86,7 @@ bindsym $mod+0 workspace 10
 bindsym $mod+Shift+exclam move container to workspace 1web
 bindsym $mod+Shift+quotedbl move container to workspace 2term
 bindsym $mod+Shift+sterling move container to workspace 3irc
-bindsym $mod+Shift+dollar move container to workspace 4
+bindsym $mod+Shift+dollar move container to workspace 4slack
 bindsym $mod+Shift+percent move container to workspace 5
 bindsym $mod+Shift+asciicircum move container to workspace 6
 bindsym $mod+Shift+ampersand move container to workspace 7
@@ -184,4 +184,4 @@ exec urxvtd -q -o -f
 # Use a sane fucking res
 exec xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal
 
-exec gtk-redshift
+exec gtk-redshift -l 53.3498:6.2603

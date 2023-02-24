@@ -1,6 +1,6 @@
 # Path to your oh-my-zsh configuration.
 
-PROFILE_STARTUP=true
+PROFILE_STARTUP=false
 if [[ "$PROFILE_STARTUP" == true ]]; then
     # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
     PS4=$'%D{%M%S%.} %N:%i> '
@@ -31,7 +31,7 @@ export DISABLE_SPRING=true
 export NVM_DIR="$HOME/.nvm"
 # [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
-export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/src/go/bin:$HOME/.rbenv/bin:$PATH"
 
 # pilot stuff
 export PATH=$HOME/.pilot/shims:$HOME/.pilot/bin:$PATH
@@ -53,6 +53,7 @@ alias gr='git rm'
 alias grbi='git rebase -i'
 alias gst='git status'
 #alias gcd="cd `git rev-parse --show-toplevel`"
+alias vim='nvim'
 
 function current_branch() {
   ref=$(git symbolic-ref HEAD 2> /dev/null) || \
