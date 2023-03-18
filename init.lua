@@ -1,44 +1,7 @@
-local Plug = vim.fn['plug#']
+local lua = require('plugins')
 
-vim.call('plug#begin', '~/.config/nvim/plugged')
-
-Plug('altercation/vim-colors-solarized')
-Plug('vim-airline/vim-airline')
-Plug('vim-airline/vim-airline-themes')
-Plug('christoomey/vim-tmux-navigator')
-Plug('dracula/vim', { as = 'dracula' })
-Plug('fatih/vim-go')
-Plug('ervandew/supertab')
-Plug('gregsexton/gitv')
-
-Plug('hashivim/vim-terraform')
 vim.g.terraform_fmt_on_save = 1
-
-Plug('junegunn/fzf')
-Plug('junegunn/fzf.vim')
-Plug('Keithbsmiley/rspec.vim')
-Plug('Lokaltog/vim-easymotion')
-Plug('mhinz/vim-signify')
-
-Plug('ms-jpq/coq_nvim', {branch = 'coq'})
-Plug('ms-jpq/coq.artifacts', {branch = 'artifacts'})
-Plug('ms-jpq/coq.thirdparty', {branch = '3p'})
 vim.g.coq_settings = {auto_start = true}
-
-Plug('neovim/nvim-lspconfig')
-
-Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
-
-Plug('regedarek/ZoomWin')
-Plug('scrooloose/nerdtree')
-Plug('scrooloose/nerdcommenter')
-Plug('tpope/vim-fugitive')
-Plug('tpope/vim-rhubarb')
-Plug('tpope/vim-surround')
-Plug('tpope/vim-vinegar')
-Plug('vim-ruby/vim-ruby')
-
-vim.call('plug#end')
 
 local lsp = require "lspconfig"
 local coq = require "coq"
@@ -73,15 +36,18 @@ vim.opt.softtabstop = 2
 vim.opt.timeoutlen = 10000
 vim.opt.ttimeoutlen = 10000
 vim.opt.virtualedit = block
-vim.opt.wildmode = longest,list,full
 vim.opt.wildmenu = true
+vim.opt.wildmode = {'list', 'full'}
 
 vim.cmd("colorscheme dracula")
 
 vim.g.python3_host_prog = '/usr/bin/python3'
 
 vim.g.mapleader = ' '
-vim.api.nvim_set_keymap('n', '<leader>o', ':NERDTreeToggle<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>p', ':Files<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>i', ':Buffers<CR>', {noremap = true})
-vim.api.nvim_set_keymap('n', '<leader>g', ':Rg<CR>', {noremap = true})
+vim.keymap.set('n', '<leader>o', ':Neotree toggle<CR>', {noremap = true})
+
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>p', builtin.find_files, {})
+vim.keymap.set('n', '<leader>g', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>i', builtin.buffers, {})
+vim.keymap.set('n', '<leader>h', builtin.help_tags, {})
