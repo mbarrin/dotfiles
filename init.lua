@@ -2,6 +2,7 @@ local lua = require('plugins')
 
 vim.g.terraform_fmt_on_save = 1
 vim.g.coq_settings = {auto_start = true}
+vim.g.go_term_enabled = true
 
 local lsp = require "lspconfig"
 local coq = require "coq"

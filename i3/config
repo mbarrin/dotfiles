@@ -18,7 +18,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvtc
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -130,14 +130,6 @@ bar {
         position top
         separator_symbol ":"
         strip_workspace_numbers yes
-        colors {
-
-            focused_workspace  #FFFFFF #00FF00
-            active_workspace   #FFFFFF #888875
-            inactive_workspace #FFFFFF #222222
-            urgent_workspace   #000000 #FF0000
-            separator          #9999FF
-        }
 }
 
 #Colours for windows

@@ -19,27 +19,12 @@ plugins=(vi-mode rbenv)
 
 export GOPATH=${HOME}/src/go
 source $ZSH/oh-my-zsh.sh
-source /usr/local/share/zsh/site-functions/aws_zsh_completer.sh
 
 export PATH=$HOME/bin:$PATH
 
 bindkey -M viins '¬' run-help
 
-# Because FUCK Spring.
-export DISABLE_SPRING=true
-
-export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-
 export PATH="$HOME/src/go/bin:$HOME/.rbenv/bin:$PATH"
-
-# pilot stuff
-export PATH=$HOME/.pilot/shims:$HOME/.pilot/bin:$PATH
-alias penv='eval $(pilot env)'
-export INTERCOM_USER="matthew"
-alias pei='pilot exec intercom'
-
-alias be='bundle exec'
 
 # git stuff
 alias ga='git add'
@@ -76,15 +61,6 @@ if [ $commands[fasd] ]; then # check if fasd is installed
   alias v='f -e vim'
   alias o='a -e open'
 fi
-
-# Assume role stuff
-function aws_account_info {
-  [ "$AWS_ACCOUNT_NAME" ] && [ "$AWS_ACCOUNT_ROLE" ] && echo "$AWS_ACCOUNT_NAME:$AWS_ACCOUNT_ROLE"
-}
-
-export AWS_DEFAULT_REGION="us-east-1"
-source $(which assume-role)
-#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 if [[ "$PROFILE_STARTUP" == true ]]; then
     unsetopt xtrace

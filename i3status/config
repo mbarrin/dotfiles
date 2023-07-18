@@ -4,6 +4,7 @@ general {
   interval = 5
 }
 
+order += "ethernet wg0"
 order += "wireless wlp1s0"
 order += "battery 1"
 order += "volume master"
@@ -13,6 +14,11 @@ order += "time"
 wireless wlp1s0 {
   format_up = "%quality %ip"
   format_down = "W↓"
+}
+
+ethernet wg0 {
+  format_up = "Wireguard: %ip"
+  format_down = "Wiregaurd: ↓"
 }
 
 battery 1 {
