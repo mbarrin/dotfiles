@@ -1,77 +1,65 @@
-local ensure_packer = function()
-	local fn = vim.fn
-	local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-		vim.cmd [[packadd packer.nvim]]
-		return true
-	end
-	return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+        vim.fn.system({
+                "git",
+                "clone",
+                "--filter=blob:none",
+                "https://github.com/folke/lazy.nvim.git",
+                "--branch=stable", -- latest stable release
+                lazypath,
+        })
 end
+vim.opt.rtp:prepend(lazypath)
 
-local packer_bootstrap = ensure_packer()
+return require('lazy').setup({
+        'vim-airline/vim-airline',
+        'vim-airline/vim-airline-themes',
+        'ervandew/supertab',
+        'gregsexton/gitv', 
 
-return require('packer').startup(function(use)
-	use 'wbthomason/packer.nvim'
+        'junegunn/fzf', 
+        'junegunn/fzf.vim', 
 
-	use 'vim-airline/vim-airline' 
-	use 'vim-airline/vim-airline-themes' 
-	use 'ervandew/supertab' 
-	use 'gregsexton/gitv' 
+        'Lokaltog/vim-easymotion',
+        'mhinz/vim-signify',
 
-	use 'junegunn/fzf' 
-	use 'junegunn/fzf.vim' 
+        {'ms-jpq/coq_nvim', branch = 'coq'},
+        {'ms-jpq/coq.artifacts', branch = 'artifacts'},
+        {'ms-jpq/coq.thirdparty', branch = '3p'},
 
-	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.1',
-		requires = { {'nvim-lua/plenary.nvim'} }
-	}
+        'neovim/nvim-lspconfig',
+        { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
+        'nvim-treesitter/nvim-treesitter-context',
+        'nvim-treesitter/nvim-treesitter-textobjects',
 
-	use 'Lokaltog/vim-easymotion' 
-	use 'mhinz/vim-signify' 
+        'tpope/vim-fugitive',
+        'tpope/vim-rhubarb',
+        'tpope/vim-surround',
+        'tpope/vim-vinegar',
 
-	use {'ms-jpq/coq_nvim', branch = 'coq'} 
-	use {'ms-jpq/coq.artifacts', branch = 'artifacts'} 
-	use {'ms-jpq/coq.thirdparty', branch = '3p'} 
+        {
+		'dracula/vim',
+		name = 'dracula',
+		lazy = false,
+		priority = 1000,
+		config = function()
+			vim.cmd([[colorscheme dracula]])
+		end,
+	},
 
-	use 'neovim/nvim-lspconfig' 
-	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'} 
+        { 'vim-ruby/vim-ruby', ft = {'ruby'}, lazy = true },
 
-	use 'tpope/vim-fugitive' 
-	use 'tpope/vim-rhubarb' 
-	use 'tpope/vim-surround' 
-	use 'tpope/vim-vinegar' 
+        { 'fatih/vim-go', ft = {'go'}, lazy = true },
 
-	use { 'dracula/vim', as = 'dracula' } 
+        { 'hashivim/vim-terraform', ft = {'terraform'}, lazy = true },
 
-	use {
-		'vim-ruby/vim-ruby',
-		ft = {'ruby'},
-		opt = true
-	}
-
-	use {
-		'fatih/vim-go',
-		ft = {'go'},
-		opt = true
-	}
-
-	use {
-		'hashivim/vim-terraform',
-		ft = {'terraform'},
-		opt = true
-	}
-
-	use {
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v2.x",
-		requires = { 
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-		}
-	}
-	if packer_bootstrap then
-		require('packer').sync()
-	end
-end)
+        {
+                "nvim-neo-tree/neo-tree.nvim",
+                branch = "v3.x",
+                dependencies = { 
+                        "nvim-lua/plenary.nvim",
+                        "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+                        "MunifTanjim/nui.nvim",
+                }
+        },
+})
