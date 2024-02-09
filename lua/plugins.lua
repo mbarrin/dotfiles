@@ -32,6 +32,8 @@ return require('lazy').setup({
         'nvim-treesitter/nvim-treesitter-context',
         'nvim-treesitter/nvim-treesitter-textobjects',
 
+        {"williamboman/mason.nvim"},
+
         'tpope/vim-fugitive',
         'tpope/vim-rhubarb',
         'tpope/vim-surround',

@@ -1,4 +1,11 @@
-vim.g.coq_settings = {auto_start = true}
+vim.g.coq_settings = {
+        auto_start = true,
+        clients = {
+                tmux = {
+                        enabled = false
+                }
+        }
+}
 vim.g.mapleader = ' '
 
 local lua = require('plugins')
@@ -27,6 +34,7 @@ require 'nvim-treesitter.configs'.setup {
 
 }
 
+require("mason").setup()
 local lsp = require "lspconfig"
 local coq = require "coq"
 
