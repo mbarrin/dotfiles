@@ -1,68 +1,78 @@
-# Path to your oh-my-zsh configuration.
+# Set up the prompt
 
-PROFILE_STARTUP=false
-if [[ "$PROFILE_STARTUP" == true ]]; then
-    # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
-    PS4=$'%D{%M%S%.} %N:%i> '
-    exec 3>&2 2>$HOME/tmp/startlog.$$
-    setopt xtrace prompt_subst
-fi
-
-ZSH=$HOME/.oh-my-zsh
-
-ZSH_THEME="moju"
-
-# Comment this out to disable bi-weekly auto-update checks
-DISABLE_AUTO_UPDATE="true"
-
-plugins=(vi-mode rbenv)
-
-export GOPATH=${HOME}/src/go
-source $ZSH/oh-my-zsh.sh
-
-export PATH=$HOME/bin:$PATH
-
-bindkey -M viins '¬' run-help
-
-export PATH="$HOME/src/go/bin:$HOME/.rbenv/bin:$PATH"
-
-# git stuff
-alias ga='git add'
-alias gb='git branch'
-alias gc='git commit -v'
-alias gco='git checkout'
-alias gcm='git checkout master'
-alias gd='git diff'
-alias gpr='git pull-request'
-alias gr='git rm'
-alias grbi='git rebase -i'
-alias gst='git status'
-#alias gcd="cd `git rev-parse --show-toplevel`"
-alias vim='nvim'
-
-function current_branch() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || \
-  ref=$(git rev-parse --short HEAD 2> /dev/null) || return
-  echo ${ref#refs/heads/}
+autoload -Uz vcs_info
+zstyle ':vcs_info:git*' actionformats
+zstyle ':vcs_info:git*' formats " (%F{red}%b%f)%F{red}%u%f%F{green}%c%f"
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' unstagedstr "-"  # string for %u
+zstyle ':vcs_info:git:*' stagedstr "+"    # string for %c
+precmd() {
+    vcs_info
 }
 
-alias gl='git pull origin $(current_branch)'
-alias gp='git push origin $(current_branch)'
+autoload -Uz promptinit
+promptinit
+setopt PROMPT_SUBST
+PROMPT='%F{red}%n%f@%F{red}%m%f:%F{blue}%?%f:%~${vcs_info_msg_0_}$ '
 
-export PATH="$HOME/.yarn/bin:$PATH"
+setopt histignorealldups sharehistory
 
-if [ $commands[fasd] ]; then # check if fasd is installed
-  fasd_cache="$HOME/.fasd-init-cache"
-  if [ "$(command -v fasd)" -nt "$fasd_cache" -o ! -s "$fasd_cache" ]; then
-    fasd --init auto >| "$fasd_cache"
-  fi
-  source "$fasd_cache"
-  unset fasd_cache
-  alias v='f -e vim'
-  alias o='a -e open'
-fi
+# Use vim keybindings
+bindkey -v
 
-if [[ "$PROFILE_STARTUP" == true ]]; then
-    unsetopt xtrace
-    exec 2>&3 3>&-
-fi
+# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+HISTSIZE=1000
+SAVEHIST=1000
+HISTFILE=~/.zsh_history
+
+# Use modern completion system
+autoload -Uz compinit
+compinit
+
+zstyle ':completion:*' auto-description 'specify: %d'
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' format 'Completing %d'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*' menu select=2
+eval "$(dircolors -b)"
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' list-colors ''
+zstyle ':completion:*' list-prompt %SAt %p: Hit TAB for more, or the character to insert%s
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=* l:|=*'
+zstyle ':completion:*' menu select=long
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+zstyle ':completion:*' use-compctl false
+zstyle ':completion:*' verbose true
+
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+
+PATH=$PATH:~/go/bin
+
+alias gl="git pull"
+alias gp="git push"
+alias gs="git switch"
+alias gsc="git switch -c"
+alias gsm="git switch master"
+alias gb="git branch"
+alias gst="git status"
+alias ga="git add"
+alias gc="git commit"
+
+alias fd="fdfind"
+
+eval "$(op completion zsh)"; compdef _op op
+
+ops() {
+  eval $(op signin)
+}
+
+opg() {
+  op item get $(op item list | fzf | cut -d' ' -f 1)
+}
+
+eval "$(zoxide init zsh --cmd j)"
+
+tssh() {
+  ssh $(tailscale status | grep linux | grep -v '-' | fzf | cut -d' ' -f 1)
+}

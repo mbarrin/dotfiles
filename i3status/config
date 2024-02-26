@@ -4,21 +4,20 @@ general {
   interval = 5
 }
 
-order += "ethernet wg0"
-order += "wireless wlp1s0"
+order += "ethernet tailscale0"
+order += "wireless wlp170s0"
 order += "battery 1"
 order += "volume master"
 order += "disk /"
 order += "time"
 
-wireless wlp1s0 {
+wireless wlp170s0 {
   format_up = "%quality %ip"
   format_down = "W↓"
 }
 
-ethernet wg0 {
-  format_up = "Wireguard: %ip"
-  format_down = "Wiregaurd: ↓"
+ethernet tailscale0 {
+  format_up = "TS"
 }
 
 battery 1 {
