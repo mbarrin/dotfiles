@@ -15,7 +15,7 @@ promptinit
 setopt PROMPT_SUBST
 PROMPT='%F{red}%n%f@%F{red}%m%f:%F{blue}%?%f:%~${vcs_info_msg_0_}$ '
 
-setopt histignorealldups sharehistory
+setopt histignorealldups sharehistory completealiases
 
 # Use vim keybindings
 bindkey -v
@@ -24,6 +24,10 @@ bindkey -v
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
+
+# asdf
+. "$HOME/.asdf/asdf.sh"
+fpath=(${ASDF_DIR}/completions $fpath)
 
 # Use modern completion system
 autoload -Uz compinit
@@ -76,3 +80,13 @@ eval "$(zoxide init zsh)"
 tssh() {
   ssh $(tailscale status | grep linux | grep -v '-' | fzf | cut -d' ' -f 1)
 }
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/nomad nomad
+export NOMAD_TOKEN=op://personal/Nomad/password
+
+alias nomad="op run -- nomad"
+alias consul-template="op run -- consul-template"
+
+export PATH="/home/matthew/.local/bin:$PATH"
+export PATH="/home/matthew/.cargo/bin:$PATH"

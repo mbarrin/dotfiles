@@ -12,53 +12,68 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 return require('lazy').setup({
-        'vim-airline/vim-airline',
-        'vim-airline/vim-airline-themes',
-        'ervandew/supertab',
-        'gregsexton/gitv', 
+        -- Sets up the line at the bottom
+        'nvim-lualine/lualine.nvim',
 
-        { 'junegunn/fzf',  build = ':call fzf#install()' },
-        'junegunn/fzf.vim', 
+        -- Fancier tab, dunno if I need?
+        --'ervandew/supertab',
 
-        'Lokaltog/vim-easymotion',
-        'mhinz/vim-signify',
+        -- All the fzf stuff
+        { 'junegunn/fzf', build = ':call fzf#install()' },
+        'junegunn/fzf.vim',
 
-        {'ms-jpq/coq_nvim', branch = 'coq'},
-        {'ms-jpq/coq.artifacts', branch = 'artifacts'},
-        {'ms-jpq/coq.thirdparty', branch = '3p'},
+        -- Move fast
+        'easymotion/vim-easymotion',
 
+        -- Auto complete stuff
+        -- {'ms-jpq/coq_nvim', branch = 'coq'},
+        -- {'ms-jpq/coq.artifacts', branch = 'artifacts'},
+        -- {'ms-jpq/coq.thirdparty', branch = '3p'},
+        'hrsh7th/nvim-cmp',
+	'hrsh7th/cmp-nvim-lsp',
+        'hrsh7th/cmp-buffer',
+        'hrsh7th/cmp-path',
+
+        -- LSP
         'neovim/nvim-lspconfig',
+        "williamboman/mason.nvim",
+
+        -- Treesitter stuff
         { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
         'nvim-treesitter/nvim-treesitter-context',
         'nvim-treesitter/nvim-treesitter-textobjects',
 
-        {"williamboman/mason.nvim"},
-
+        -- Git stuff
         'tpope/vim-fugitive',
         'tpope/vim-rhubarb',
-        'tpope/vim-surround',
-        'tpope/vim-vinegar',
+        'lewis6991/gitsigns.nvim',
+        --'mhinz/vim-signify',
 
+        -- Fancy changing stuff
+        --'tpope/vim-surround',
+        'kylechui/nvim-surround',
+
+        -- Colourscheme
         {
-		'dracula/vim',
-		name = 'dracula',
-		lazy = false,
-		priority = 1000,
-		config = function()
-			vim.cmd([[colorscheme dracula]])
-		end,
-	},
+                'dracula/vim',
+                name = 'dracula',
+                lazy = false,
+                priority = 1000,
+                config = function()
+                        vim.cmd([[colorscheme dracula]])
+                end,
+        },
 
+        -- Language specific plugins
         { 'vim-ruby/vim-ruby', ft = {'ruby'}, lazy = true },
-
         { 'fatih/vim-go', ft = {'go'}, lazy = true },
-
         { 'hashivim/vim-terraform', ft = {'terraform'}, lazy = true },
 
+        -- File browser
         {
                 "nvim-neo-tree/neo-tree.nvim",
                 branch = "v3.x",
-                dependencies = { 
+                dependencies = {
                         "nvim-lua/plenary.nvim",
                         "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
                         "MunifTanjim/nui.nvim",
