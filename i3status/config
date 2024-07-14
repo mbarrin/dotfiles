@@ -1,5 +1,4 @@
 general {
-  output_format = i3bar
   colors = true
   interval = 5
 }
@@ -17,7 +16,7 @@ wireless wlp170s0 {
 }
 
 ethernet tailscale0 {
-  format_up = "TS"
+  format_up = "TS: %ip"
 }
 
 battery 1 {

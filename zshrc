@@ -47,7 +47,7 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-PATH=$PATH:~/go/bin
+PATH=$PATH:~/go/bin:~/.local/share/gem/ruby/3.1.0/bin
 
 alias gl="git pull"
 alias gp="git push"
@@ -71,7 +71,7 @@ opg() {
   op item get $(op item list | fzf | cut -d' ' -f 1)
 }
 
-eval "$(zoxide init zsh --cmd j)"
+eval "$(zoxide init zsh)"
 
 tssh() {
   ssh $(tailscale status | grep linux | grep -v '-' | fzf | cut -d' ' -f 1)

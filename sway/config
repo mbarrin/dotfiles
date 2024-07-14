@@ -20,6 +20,7 @@ for_window [app_id="floating"] floating enable
 
 for_window [app_id="firefox"] inhibit_idle fullscreen
 for_window [app_id="org.jellyfin.jellyfinmediaplayer"] inhibit_idle visible
+for_window [instance="vlc"] inhibit_idle fullscreen
 
 # kill focused window
 bindsym $mod+Shift+Q kill
@@ -149,21 +150,22 @@ client.background       #F8F8F2
 
 bar {
         swaybar_command waybar
-        #height 24
-        #position bottom
-        #separator_symbol ":"
-        #strip_workspace_numbers yes
-        #colors {
-        #        background #282A36
-        #        statusline #F8F8F2
-        #        separator  #44475A
+        #status_command i3status
+        height 24
+        position bottom
+        separator_symbol ":"
+        strip_workspace_numbers yes
+        colors {
+                background #282A36
+                statusline #F8F8F2
+                separator  #44475A
 
-        #        focused_workspace  #44475A #44475A #F8F8F2
-        #        active_workspace   #282A36 #44475A #F8F8F2
-        #        inactive_workspace #282A36 #282A36 #BFBFBF
-        #        urgent_workspace   #FF5555 #FF5555 #F8F8F2
-        #        binding_mode       #FF5555 #FF5555 #F8F8F2
-        #}
+                focused_workspace  #44475A #44475A #F8F8F2
+                active_workspace   #282A36 #44475A #F8F8F2
+                inactive_workspace #282A36 #282A36 #BFBFBF
+                urgent_workspace   #FF5555 #FF5555 #F8F8F2
+                binding_mode       #FF5555 #FF5555 #F8F8F2
+        }
 }
 
 bindsym $mod+bracketleft move scratchpad
@@ -182,13 +184,14 @@ bindsym $mod+Shift+o exec grimshot copy window
 #Autostart programs
 
 # networking applet.
-exec nm-applet --indicator
+exec nm-tray
 exec blueman-applet --syslog
 
 exec lxpolkit
 
 input * {
         xkb_layout "ie"
+        xkb_options caps:swapescape
 }
 
 bindsym Control+Space exec dunstctl close

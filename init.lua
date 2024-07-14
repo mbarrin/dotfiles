@@ -39,6 +39,7 @@ local lsp = require "lspconfig"
 local coq = require "coq"
 
 lsp.gopls.setup(coq.lsp_ensure_capabilities())
+lsp.solargraph.setup(coq.lsp_ensure_capabilities())
 
 vim.opt.autoindent = true
 vim.opt.background = 'dark'

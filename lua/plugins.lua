@@ -17,7 +17,7 @@ return require('lazy').setup({
         'ervandew/supertab',
         'gregsexton/gitv', 
 
-        'junegunn/fzf', 
+        { 'junegunn/fzf',  build = ':call fzf#install()' },
         'junegunn/fzf.vim', 
 
         'Lokaltog/vim-easymotion',
