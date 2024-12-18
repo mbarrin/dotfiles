@@ -43,6 +43,13 @@ local cmp = require "cmp"
 
 local lsp = require "lspconfig"
 
+lsp.gopls.setup{
+  capabilities = require('cmp_nvim_lsp').default_capabilities()
+}
+
+lsp.golangci_lint_ls.setup{}
+lsp.denols.setup{}
+
 local select_opts = {behavior = cmp.SelectBehavior.Select}
 
 cmp.setup({
@@ -121,10 +128,6 @@ cmp.setup({
     end, {'i', 's'}),
   },
 })
-
-lsp.gopls.setup{
-  capabilities = require('cmp_nvim_lsp').default_capabilities()
-}
 
 vim.opt.autoindent = true
 vim.opt.background = 'dark'

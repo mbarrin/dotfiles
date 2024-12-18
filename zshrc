@@ -26,8 +26,6 @@ SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
 # asdf
-. "$HOME/.asdf/asdf.sh"
-fpath=(${ASDF_DIR}/completions $fpath)
 
 # Use modern completion system
 autoload -Uz compinit
@@ -90,3 +88,4 @@ alias consul-template="op run -- consul-template"
 
 export PATH="/home/matthew/.local/bin:$PATH"
 export PATH="/home/matthew/.cargo/bin:$PATH"
+eval "$(~/.local/bin/mise activate zsh)"
