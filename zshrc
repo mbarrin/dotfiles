@@ -25,8 +25,6 @@ HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.zsh_history
 
-# asdf
-
 # Use modern completion system
 autoload -Uz compinit
 compinit
@@ -60,8 +58,15 @@ alias gb="git branch"
 alias gst="git status"
 alias ga="git add"
 alias gc="git commit"
+alias gd="git diff"
+alias grbi="git rebase --interactive"
 
-alias fd="fdfind"
+gsf() {
+  git switch $(git branch|fzf)
+}
+
+#alias fd="fdfind"
+alias vim="nvim"
 
 eval "$(op completion zsh)"; compdef _op op
 
@@ -79,6 +84,10 @@ tssh() {
   ssh $(tailscale status | grep linux | grep -v '-' | fzf | cut -d' ' -f 1)
 }
 
+eval "$(fzf --zsh)"
+#eval "$(fnm env --use-on-cd)"
+#export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/nomad nomad
 export NOMAD_TOKEN=op://personal/Nomad/password
@@ -86,6 +95,11 @@ export NOMAD_TOKEN=op://personal/Nomad/password
 alias nomad="op run -- nomad"
 alias consul-template="op run -- consul-template"
 
-export PATH="/home/matthew/.local/bin:$PATH"
-export PATH="/home/matthew/.cargo/bin:$PATH"
-eval "$(~/.local/bin/mise activate zsh)"
+export PATH="${HOME}/.local/bin:$PATH"
+export PATH="${HOME}/.cargo/bin:$PATH"
+
+alias k="kubectl"
+eval "$(${HOME}/.local/bin/mise activate zsh)"
+
+complete -o nospace -C /opt/homebrew/bin/grr grr
+

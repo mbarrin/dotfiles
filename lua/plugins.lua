@@ -66,8 +66,32 @@ return require('lazy').setup({
 
         -- Language specific plugins
         { 'vim-ruby/vim-ruby', ft = {'ruby'}, lazy = true },
-        { 'fatih/vim-go', ft = {'go'}, lazy = true },
-        { 'hashivim/vim-terraform', ft = {'terraform'}, lazy = true },
+        --{ 'fatih/vim-go', ft = {'go'}, lazy = true },
+        {
+                "ray-x/go.nvim",
+                dependencies = {  -- optional packages
+                        "ray-x/guihua.lua",
+                        "neovim/nvim-lspconfig",
+                        "nvim-treesitter/nvim-treesitter",
+                },
+                config = function()
+                        require("go").setup()
+                end,
+                event = {"CmdlineEnter"},
+                ft = {"go", 'gomod'},
+                build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
+        },
+        {
+                "rcarriga/nvim-dap-ui",
+                dependencies = {
+                        "mfussenegger/nvim-dap",
+                        "nvim-neotest/nvim-nio",
+                },
+                ft = {"go", 'gomod'},
+        },
+
+
+        { 'mbarrin/vim-terraform', ft = {'terraform', 'terraform-vars'}, lazy = true },
 
         -- File browser
         {
@@ -79,4 +103,9 @@ return require('lazy').setup({
                         "MunifTanjim/nui.nvim",
                 }
         },
+
+        { 'grafana/vim-alloy', ft = {'alloy'} },
+
+        { "github/copilot.vim" },
+        { "google/vim-jsonnet" }
 })
