@@ -97,9 +97,9 @@ alias consul-template="op run -- consul-template"
 
 export PATH="${HOME}/.local/bin:$PATH"
 export PATH="${HOME}/.cargo/bin:$PATH"
+export PATH="${HOME}/.local/zig:$PATH"
 
 alias k="kubectl"
 eval "$(${HOME}/.local/bin/mise activate zsh)"
 
 complete -o nospace -C /opt/homebrew/bin/grr grr
-

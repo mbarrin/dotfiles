@@ -80,7 +80,7 @@ bindsym $mod+d focus child
 set $ws1 1:web
 set $ws2 2:term
 set $ws3 3:irc
-set $ws4 4:slack
+set $ws4 4:chat
 set $ws5 5
 set $ws6 6
 set $ws7 7
@@ -179,7 +179,7 @@ bindsym Mod1+Control+l exec "$sl"
 
 # screenshot
 bindsym $mod+o exec grimshot copy area
-bindsym $mod+Shift+o exec grimshot copy window
+bindsym $mod+Shift+o exec grimshot save area
 
 #Autostart programs
 
