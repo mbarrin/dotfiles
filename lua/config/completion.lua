@@ -1,6 +1,5 @@
 local cmp = require "cmp"
 
-
 local select_opts = {behavior = cmp.SelectBehavior.Select}
 
 cmp.setup({

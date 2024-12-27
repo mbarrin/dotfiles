@@ -15,20 +15,13 @@ return require('lazy').setup({
         -- Sets up the line at the bottom
         'nvim-lualine/lualine.nvim',
 
-        -- Fancier tab, dunno if I need?
-        --'ervandew/supertab',
-
         -- All the fzf stuff
         { 'junegunn/fzf', build = ':call fzf#install()' },
         'junegunn/fzf.vim',
 
         -- Move fast
         'easymotion/vim-easymotion',
-
-        -- Auto complete stuff
-        -- {'ms-jpq/coq_nvim', branch = 'coq'},
-        -- {'ms-jpq/coq.artifacts', branch = 'artifacts'},
-        -- {'ms-jpq/coq.thirdparty', branch = '3p'},
+        
         'hrsh7th/nvim-cmp',
 	'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-buffer',
@@ -47,10 +40,8 @@ return require('lazy').setup({
         'tpope/vim-fugitive',
         'tpope/vim-rhubarb',
         'lewis6991/gitsigns.nvim',
-        --'mhinz/vim-signify',
 
         -- Fancy changing stuff
-        --'tpope/vim-surround',
         'kylechui/nvim-surround',
 
         -- Colourscheme
@@ -66,7 +57,7 @@ return require('lazy').setup({
 
         -- Language specific plugins
         { 'vim-ruby/vim-ruby', ft = {'ruby'}, lazy = true },
-        --{ 'fatih/vim-go', ft = {'go'}, lazy = true },
+
         {
                 "ray-x/go.nvim",
                 dependencies = {  -- optional packages
@@ -81,6 +72,7 @@ return require('lazy').setup({
                 ft = {"go", 'gomod'},
                 build = ':lua require("go.install").update_all_sync()' -- if you need to install/update all binaries
         },
+
         {
                 "rcarriga/nvim-dap-ui",
                 dependencies = {
@@ -106,6 +98,6 @@ return require('lazy').setup({
 
         { 'grafana/vim-alloy', ft = {'alloy'} },
 
-        { "github/copilot.vim" },
+        --{ "github/copilot.vim" },
         { "google/vim-jsonnet" }
 })

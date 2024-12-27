@@ -100,6 +100,6 @@ export PATH="${HOME}/.cargo/bin:$PATH"
 export PATH="${HOME}/.local/zig:$PATH"
 
 alias k="kubectl"
-eval "$(${HOME}/.local/bin/mise activate zsh)"
 
 complete -o nospace -C /opt/homebrew/bin/grr grr
+eval "$(/home/matthew/.local/bin/mise activate zsh)"

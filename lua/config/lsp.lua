@@ -20,3 +20,7 @@ lsp.ts_ls.setup{
 lsp.bashls.setup{
   capabilities = require('cmp_nvim_lsp').default_capabilities()
 }
+
+lsp.zls.setup{
+  capabilities = require('cmp_nvim_lsp').default_capabilities()
+}

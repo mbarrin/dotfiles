@@ -2,7 +2,7 @@ vim.g.mapleader = ' '
 
 require('plugins')
 require('config.completion')
-require('config.copilot')
+--require('config.copilot')
 require('config.fzf')
 require('config.gitsigns')
 require('config.go')
