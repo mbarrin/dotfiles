@@ -12,17 +12,19 @@ precmd() {
 
 autoload -Uz promptinit
 promptinit
-setopt PROMPT_SUBST
+setopt promptsubst
 PROMPT='%F{red}%n%f@%F{red}%m%f:%F{blue}%?%f:%~${vcs_info_msg_0_}$ '
 
-setopt histignorealldups sharehistory completealiases
+setopt completealiases
+
 
 # Use vim keybindings
 bindkey -v
 
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
-HISTSIZE=1000
-SAVEHIST=1000
+# History
+setopt histignorealldups sharehistory extendedhistory
+HISTSIZE=100000
+SAVEHIST=100000
 HISTFILE=~/.zsh_history
 
 # Use modern completion system
@@ -47,8 +49,6 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-PATH=$PATH:~/go/bin:~/.local/share/gem/ruby/3.1.0/bin
-
 alias gl="git pull"
 alias gp="git push"
 alias gs="git switch"
@@ -65,7 +65,7 @@ gsf() {
   git switch $(git branch|fzf)
 }
 
-#alias fd="fdfind"
+alias fd="fdfind"
 alias vim="nvim"
 
 eval "$(op completion zsh)"; compdef _op op
@@ -75,8 +75,13 @@ ops() {
 }
 
 opg() {
-  op item get $(op item list | fzf | cut -d' ' -f 1)
+  op item get $(op item list | grep -v ID | fzf | cut -d' ' -f 1)
 }
+
+opgr() {
+  op item get $(op item list | grep -v ID | fzf | cut -d' ' -f 1) --format=json | jq '.fields[] |select(.id=="password").value' -r
+}
+
 
 eval "$(zoxide init zsh)"
 
@@ -97,9 +102,11 @@ alias consul-template="op run -- consul-template"
 
 export PATH="${HOME}/.local/bin:$PATH"
 export PATH="${HOME}/.cargo/bin:$PATH"
-export PATH="${HOME}/.local/zig:$PATH"
 
 alias k="kubectl"
 
 complete -o nospace -C /opt/homebrew/bin/grr grr
-eval "$(/home/matthew/.local/bin/mise activate zsh)"
+eval "$(${HOME}/.local/bin/mise activate zsh)"
+
+# SSH Agent stuff
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"

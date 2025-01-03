@@ -1,3 +1,6 @@
+# Include some system files for systemd
+include /etc/sway/config.d/*
+
 output eDP-1 scale 1.2
 
 set $mod Mod4
@@ -9,14 +12,23 @@ floating_modifier $mod normal
 default_border pixel
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+#bindsym $mod+Return exec alacritty
+#bindsym $mod+Shift+Return exec alacritty --class floating
+
+# Use the existing alacritty daemon
+# exec alacritty --daemon
+# bindsym $mod+Return exec alacritty msg create-window
+#bindsym $mod+Shift+Return exec alacritty msg create-window --class "Alacritty floating"
+
+# Try kitty for a bit
+bindsym $mod+Return exec kitty -1
+bindsym $mod+Shift+Return exec kitty -1 --class "kitty floating"
 
 title_align right
 workspace_auto_back_and_forth yes
 
 # start a floating terminal
-bindsym $mod+Shift+Return exec alacritty --class floating
-for_window [app_id="floating"] floating enable
+for_window [app_id="floating"] floating enable, resize set 800 800
 
 for_window [app_id="firefox"] inhibit_idle fullscreen
 for_window [app_id="org.jellyfin.jellyfinmediaplayer"] inhibit_idle visible
@@ -27,6 +39,7 @@ bindsym $mod+Shift+Q kill
 
 # start rofi for starting a process
 bindsym $mod+p exec "wofi --show drun"
+bindsym $mod+i exec "go-sway-window-switcher"
 
 xwayland enable
 
@@ -184,7 +197,8 @@ bindsym $mod+Shift+o exec grimshot save area
 #Autostart programs
 
 # networking applet.
-exec nm-tray
+#exec nm-tray
+exec nm-applet
 exec blueman-applet --syslog
 
 exec lxpolkit

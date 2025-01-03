@@ -1,0 +1,9 @@
+no_actions=true
+insensitive=true
+location=2
+hide_search=true
+dynamic_lines=true
+
+width=25%
+lines=5
+content_align=center
