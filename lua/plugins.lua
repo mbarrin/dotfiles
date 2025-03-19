@@ -19,6 +19,8 @@ return require('lazy').setup({
         { 'junegunn/fzf', build = ':call fzf#install()' },
         'junegunn/fzf.vim',
 
+        'gfanto/fzf-lsp.nvim',
+
         -- Move fast
         'easymotion/vim-easymotion',
         
@@ -83,7 +85,7 @@ return require('lazy').setup({
         },
 
 
-        { 'mbarrin/vim-terraform', ft = {'terraform', 'terraform-vars'}, lazy = true },
+        { 'hashivim/vim-terraform', ft = {'terraform'}, lazy = true },
 
         -- File browser
         {

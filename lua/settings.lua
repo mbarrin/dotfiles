@@ -21,6 +21,7 @@ vim.opt.scrolloff = 1
 vim.opt.showcmd = true
 vim.opt.showmatch = true
 vim.opt.smartcase = true
+vim.opt.shiftwidth = 2
 vim.opt.softtabstop = 2
 vim.opt.termguicolors = true
 vim.opt.timeoutlen = 10000
