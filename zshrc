@@ -15,9 +15,6 @@ promptinit
 setopt promptsubst
 PROMPT='%F{red}%n%f@%F{red}%m%f:%F{blue}%?%f:%~${vcs_info_msg_0_}$ '
 
-setopt completealiases
-
-
 # Use vim keybindings
 bindkey -v
 
@@ -100,8 +97,11 @@ export NOMAD_TOKEN=op://personal/Nomad/password
 alias nomad="op run -- nomad"
 alias consul-template="op run -- consul-template"
 
+export GOPATH="${HOME}/go"
+
 export PATH="${HOME}/.local/bin:$PATH"
 export PATH="${HOME}/.cargo/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
 alias k="kubectl"
 
