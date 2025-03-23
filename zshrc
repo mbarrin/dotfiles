@@ -62,7 +62,7 @@ gsf() {
   git switch $(git branch|fzf)
 }
 
-alias fd="fdfind"
+#alias fd="fdfind"
 alias vim="nvim"
 
 eval "$(op completion zsh)"; compdef _op op
@@ -110,3 +110,8 @@ eval "$(${HOME}/.local/bin/mise activate zsh)"
 
 # SSH Agent stuff
 export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gcr/ssh"
+
+source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
+source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
+
+export EDITOR=nvim
