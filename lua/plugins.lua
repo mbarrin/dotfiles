@@ -19,11 +19,20 @@ return require('lazy').setup({
         { 'junegunn/fzf', build = ':call fzf#install()' },
         'junegunn/fzf.vim',
 
-        'gfanto/fzf-lsp.nvim',
+        -- 'gfanto/fzf-lsp.nvim',
+
+        {
+          "ibhagwan/fzf-lua",
+          -- optional for icon support
+          dependencies = { "nvim-tree/nvim-web-devicons" },
+          -- or if using mini.icons/mini.nvim
+          -- dependencies = { "echasnovski/mini.icons" },
+          opts = {}
+        },
 
         -- Move fast
         'easymotion/vim-easymotion',
-        
+
         'hrsh7th/nvim-cmp',
 	'hrsh7th/cmp-nvim-lsp',
         'hrsh7th/cmp-buffer',

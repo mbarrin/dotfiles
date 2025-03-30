@@ -59,7 +59,7 @@ alias gd="git diff"
 alias grbi="git rebase --interactive"
 
 gsf() {
-  git switch $(git branch|fzf)
+  git switch $(git branch|fzf --accept-nth -1)
 }
 
 #alias fd="fdfind"
@@ -115,3 +115,5 @@ source "$(brew --prefix)/share/google-cloud-sdk/path.zsh.inc"
 source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
 export EDITOR=nvim
+
+alias bat=batcat
