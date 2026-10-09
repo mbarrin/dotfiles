@@ -1,3 +1,7 @@
+if [ -n "${ZSH_DEBUGRC+1}" ]; then
+    zmodload zsh/zprof
+fi
+
 # Set up the prompt
 
 autoload -Uz vcs_info
@@ -46,6 +50,7 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+alias g="git"
 alias gl="git pull"
 alias gp="git push"
 alias gs="git switch"
@@ -57,6 +62,7 @@ alias ga="git add"
 alias gc="git commit"
 alias gd="git diff"
 alias grbi="git rebase --interactive"
+#alias gcd="cd $(git-root)"
 
 gsf() {
   git switch $(git branch|fzf --accept-nth -1)
@@ -84,6 +90,13 @@ eval "$(zoxide init zsh)"
 
 tssh() {
   ssh $(tailscale status | grep linux | grep -v '-' | fzf | cut -d' ' -f 1)
+}
+
+awssh() {
+  aws --profile $1 ssm start-session --target \
+    $(aws --profile $1 autoscaling describe-auto-scaling-instances \
+    | jq --arg asg_name $2 '.AutoScalingInstances[] | select(.AutoScalingGroupName == $asg_name) | .InstanceId'  -r | fzf) \
+    --document-name AWS-StartInteractiveCommand --parameters 'command=["bash"]'
 }
 
 eval "$(fzf --zsh)"
@@ -116,4 +129,16 @@ source "$(brew --prefix)/share/google-cloud-sdk/completion.zsh.inc"
 
 export EDITOR=nvim
 
-alias bat=batcat
+# bun completions
+[ -s "/Users/matthew/.bun/_bun" ] && source "/Users/matthew/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+if [ -n "${ZSH_DEBUGRC+1}" ]; then
+    zprof
+fi
+
+export PATH="/Users/matthew/.duckdb/cli/1.4.4":$PATH
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"

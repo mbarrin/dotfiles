@@ -1,33 +1,40 @@
-vim.lsp.set_log_level("off")
-local lsp = require "lspconfig"
+-- vim.lsp.set_log_level("off")
+--local lsp = require "lspconfig"
 
-lsp.gopls.setup{
+-- vim.lsp.set_log_level("off")
+
+vim.lsp.enable('gopls', {
   capabilities = require('cmp_nvim_lsp').default_capabilities()
-}
+})
 
-lsp.terraformls.setup{
+-- Bug with files with EOT in neovim 0.12 can cause this to spin 4eva
+vim.lsp.enable('terraformls', {
   capabilities = require('cmp_nvim_lsp').default_capabilities()
-}
+})
 
-lsp.jsonnet_ls.setup{
+vim.lsp.enable('jsonnet_ls', {
   capabilities = require('cmp_nvim_lsp').default_capabilities()
-}
+})
 
-lsp.ts_ls.setup{
+vim.lsp.enable('ts_ls', {
   capabilities = require('cmp_nvim_lsp').default_capabilities()
-}
+})
 
-lsp.bashls.setup{
+vim.lsp.enable('bashls', {
   capabilities = require('cmp_nvim_lsp').default_capabilities()
-}
+})
 
-lsp.zls.setup{
+vim.lsp.enable('ruby_lsp', {
   capabilities = require('cmp_nvim_lsp').default_capabilities()
-}
+})
 
-vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, {})
-vim.keymap.set('n', 'gy', vim.lsp.buf.type_definition, {})
-vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, {})
-vim.keymap.set('n', 'gr', vim.lsp.buf.references, {})
-vim.keymap.set('n', 'gI', vim.lsp.buf.incoming_calls, {})
+vim.lsp.enable('regols', {
+  capabilities = require('cmp_nvim_lsp').default_capabilities()
+})
+
+vim.keymap.set('n', 'gd', ':FzfLua lsp_definitions<CR>', {})
+vim.keymap.set('n', 'gD', ':FzfLua lsp_declarations<CR>', {})
+vim.keymap.set('n', 'gy', ':FzfLua lsp_typedefs<CR>', {})
+vim.keymap.set('n', 'gi', ':FzfLua lsp_implementations<CR>', {})
+vim.keymap.set('n', 'gR', ':FzfLua lsp_references<CR>', {})
+vim.keymap.set('n', 'gI', ':FzfLua lsp_incoming_calls<CR>', {})

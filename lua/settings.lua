@@ -1,3 +1,4 @@
+vim.diagnostic.config({virtual_text = true })
 vim.opt.autoindent = true
 vim.opt.background = 'dark'
 vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
@@ -6,7 +7,8 @@ vim.opt.enc = 'utf-8'
 vim.opt.expandtab = true
 vim.opt.fileencoding = 'utf-8'
 vim.opt.foldmethod='expr'
-vim.opt.foldexpr="nvim_treesitter#foldexpr()"
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.opt.foldenable=false
 vim.opt.hidden = true
 vim.opt.history = 50

@@ -43,9 +43,9 @@ return require('lazy').setup({
         "williamboman/mason.nvim",
 
         -- Treesitter stuff
-        { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate'},
-        'nvim-treesitter/nvim-treesitter-context',
-        'nvim-treesitter/nvim-treesitter-textobjects',
+        { 'nvim-treesitter/nvim-treesitter', lazy = false, build = ':TSUpdate'},
+        -- 'nvim-treesitter/nvim-treesitter-context',
+        -- 'nvim-treesitter/nvim-treesitter-textobjects',
 
         -- Git stuff
         'tpope/vim-fugitive',
@@ -94,7 +94,7 @@ return require('lazy').setup({
         },
 
 
-        { 'hashivim/vim-terraform', ft = {'terraform'}, lazy = true },
+        { 'mbarrin/vim-terraform', ft = {'terraform'}, lazy = true },
 
         -- File browser
         {
@@ -110,5 +110,7 @@ return require('lazy').setup({
         { 'grafana/vim-alloy', ft = {'alloy'} },
 
         --{ "github/copilot.vim" },
-        { "google/vim-jsonnet" }
+        { "google/vim-jsonnet" },
+
+        { 'isobit/vim-caddyfile' }
 })
