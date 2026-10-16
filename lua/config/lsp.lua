@@ -4,6 +4,7 @@ local lsp = require "lspconfig"
 lsp.gopls.setup{
   capabilities = require('cmp_nvim_lsp').default_capabilities()
 }
+vim.lsp.enable('gopls')
 
 lsp.terraformls.setup{
   capabilities = require('cmp_nvim_lsp').default_capabilities()
